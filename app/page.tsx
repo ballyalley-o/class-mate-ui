@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <section>
       <div className=''>
-        <h1 className='text-8xl'>ClassMate</h1>
+        <h1 className='text-8xl'></h1>
       </div>
     </section>
   )
