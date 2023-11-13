@@ -2,6 +2,8 @@ import '@globals'
 import type { Metadata } from 'next'
 import { Kenia, Chathura } from 'next/font/google'
 import { LANG } from '@config'
+// @components
+import { Navbar } from '@components'
 
 const kenia = Kenia({
   subsets: ['latin'],
@@ -9,7 +11,7 @@ const kenia = Kenia({
 })
 const chathura = Chathura({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['100', '300', '400'],
 })
 
 export const metadata: Metadata = {
@@ -24,7 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang={LANG.en}>
-      <body className={kenia.className}>{children}</body>
+      <body className={kenia.className}>
+        <main className='max-w-10xl mx-auto'>
+          <Navbar />
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
