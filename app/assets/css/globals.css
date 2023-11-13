@@ -8,6 +8,13 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -24,4 +31,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.nav {
+  @apply flex justify-between items-center px-6 md:px-20 py-4;
+}
+
+.nav-brand {
+  @apply text-[21px] text-white font-bold;
 }
