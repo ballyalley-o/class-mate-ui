@@ -38,5 +38,5 @@ body {
 }
 
 .nav-brand {
-  @apply text-[21px] text-white font-bold;
+  @apply font-kenia text-[32px] text-white font-bold;
 }
