@@ -37,8 +37,8 @@ const config: Config = {
         '10xl': '1440px',
       },
       fontFamily: {
-        inter: ['Kenia', 'sans-serif'],
-        manrope: ['Chathura', 'sans-serif'],
+        kenia: ['Kenia', 'sans-serif'],
+        chathura: ['Chathura', 'sans-serif'],
       },
       borderRadius: {
         5: '5px',
