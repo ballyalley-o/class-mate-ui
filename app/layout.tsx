@@ -26,8 +26,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang={LANG.en}>
-      <body className={kenia.className}>
-        <main className='max-w-10xl mx-auto'>
+      <body className={chathura.className}>
+        <main className='max-w-10xl'>
           <Navbar />
           {children}
         </main>
