@@ -26,12 +26,18 @@ const config: Config = {
         'neutral-black': '#23263B',
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'bg-img': "url('/img-1.png')",
+        'bg-img-0': "url('/img-2.png')",
+        'pattern': "url('/pattern.png')",
+        'pattern-bg': "url('/pattern-bg.png')"
       },
       boxShadow: {
         xs: '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
+      },
+      screens: {
+        xs: '400px',
+        '3xl': '1680px',
+        '4xl': '2200px'
       },
       maxWidth: {
         '10xl': '1440px',
@@ -42,6 +48,7 @@ const config: Config = {
       },
       borderRadius: {
         5: '5px',
+        '5xl': '40px'
       },
     },
   },
