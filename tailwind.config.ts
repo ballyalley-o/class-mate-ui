@@ -28,8 +28,8 @@ const config: Config = {
       backgroundImage: {
         'bg-img': "url('/img-1.png')",
         'bg-img-0': "url('/img-2.png')",
-        'pattern': "url('/pattern.png')",
-        'pattern-bg': "url('/pattern-bg.png')"
+        pattern: "url('/pattern.png')",
+        'pattern-bg': "url('/pattern-bg.png')",
       },
       boxShadow: {
         xs: '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
@@ -37,18 +37,18 @@ const config: Config = {
       screens: {
         xs: '400px',
         '3xl': '1680px',
-        '4xl': '2200px'
+        '4xl': '2200px',
       },
       maxWidth: {
         '10xl': '1440px',
       },
       fontFamily: {
         kenia: ['Kenia', 'sans-serif'],
-        chathura: ['Chathura', 'sans-serif'],
+        oswald: ['Oswald', 'sans-serif'],
       },
       borderRadius: {
         5: '5px',
-        '5xl': '40px'
+        '5xl': '40px',
       },
     },
   },
