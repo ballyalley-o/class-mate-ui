@@ -108,6 +108,14 @@ body {
     @apply text-[14px] font-[600];
   }
 
+  .light-14 {
+    @apply text-[14px] font-[300];
+  }
+
+  .light-12 {
+    @apply text-[12px] font-[200];
+  }
+
   .bold-88 {
     @apply text-[88px] font-[700] leading-[120%];
   }
@@ -138,6 +146,10 @@ body {
 
   .bold-16 {
     @apply text-[16px] font-[700];
+  }
+
+  .bold-14 {
+    @apply text-[14px] font-[700];
   }
 
   /* Hero */
