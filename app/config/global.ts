@@ -1,10 +1,19 @@
 import LANG from './lang'
 
 const GLOBAL = {
-  api: '',
+  api: process.env.API_URL,
   brand: {
-    icon: '',
-    text: '',
+    logo: '/assets/brand/classmate-main.svg',
+    logo_secondary: '/assets/brand/classmate-ico.ico',
+    man: '/assets/brand/classmate-man.svg',
+    text: '/assets/brand/classmate-text.svg',
+    icon: {
+      32: '/assets/brand/classmate32x32.ico',
+      64: '/assets/brand/classmate64x64.ico',
+      180: '/assets/brand/classmate180x180.ico',
+    },
   },
-  lang: LANG,
+  lang: LANG.en,
 }
+
+export default GLOBAL
