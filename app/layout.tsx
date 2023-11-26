@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Kenia, Chathura } from 'next/font/google'
 import { LANG } from '@config'
 // @components
-import { Navbar } from '@components'
+import { Navbar, Footer } from '@components'
 
 const kenia = Kenia({
   subsets: ['latin'],
@@ -27,9 +27,10 @@ export default function RootLayout({
   return (
     <html lang={LANG.en}>
       <body className={chathura.className}>
-        <main className='max-w-10xl'>
+        <main className='relative overflow-hidden'>
           <Navbar />
           {children}
+          <Footer />
         </main>
       </body>
     </html>
