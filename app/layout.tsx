@@ -1,6 +1,6 @@
 import '@globals'
 import type { Metadata } from 'next'
-import { Kenia, Chathura } from 'next/font/google'
+import { Kenia, Oswald } from 'next/font/google'
 import { LANG } from '@config'
 // @components
 import { Navbar, Footer } from '@components'
@@ -9,9 +9,9 @@ const kenia = Kenia({
   subsets: ['latin'],
   weight: ['400'],
 })
-const chathura = Chathura({
+const oswald = Oswald({
   subsets: ['latin'],
-  weight: ['100', '300', '400'],
+  weight: ['200', '300', '500', '700'],
 })
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang={LANG.en}>
-      <body className={chathura.className}>
+      <body className={oswald.className}>
         <main className='relative overflow-hidden'>
           <Navbar />
           {children}
