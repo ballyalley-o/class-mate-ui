@@ -10,3 +10,4 @@ export { default as About } from '@components/About/About'
 export { default as Hero } from '@components/Hero/Hero'
 // @exercises
 export { default as Exercises } from '@components/Exercises/Exercises'
+
