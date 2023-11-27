@@ -11,6 +11,7 @@ const GLOBAL = {
       32: '/assets/brand/classmate32x32.ico',
       64: '/assets/brand/classmate64x64.ico',
       180: '/assets/brand/classmate180x180.ico',
+      svg: '/assets/brand/classmate-ico.svg',
     },
   },
   lang: LANG.en,
