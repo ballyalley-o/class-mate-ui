@@ -47,6 +47,14 @@ body {
     @apply flex gap-2 text-sm font-medium text-white-200;
   }
 
+  .btn_green {
+    @apply px-8 py-5 text-white;
+  }
+
+  .btn_dark_green {
+    @apply px-8 py-4 text-white transition-all hover:bg-black;
+  }
+
   .flexCenter {
     @apply flex items-center justify-center;
   }
@@ -97,11 +105,11 @@ body {
   }
 
   .regular-16 {
-    @apply text-[16px] font-[400];
+    @apply text-[16px] font-[200];
   }
 
   .regular-14 {
-    @apply text-[14px] font-[400];
+    @apply text-[14px] font-[100];
   }
 
   .medium-14 {
@@ -170,5 +178,10 @@ body {
   /* Get App */
   .get-app {
     @apply max-container relative flex w-full  flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;
+  }
+
+  /* Hero */
+  .hero-map {
+    @apply absolute right-0 top-0 h-screen w-screen bg-pattern-2 bg-cover bg-center md:-right-28 xl:-top-60;
   }
 }
