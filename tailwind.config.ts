@@ -29,6 +29,7 @@ const config: Config = {
         'bg-img': "url('/img-1.png')",
         'bg-img-0': "url('/img-2.png')",
         pattern: "url('/pattern.png')",
+        'pattern-2': "url('/assets/images/pattern-bg.png')",
         'pattern-bg': "url('/pattern-bg.png')",
       },
       boxShadow: {
