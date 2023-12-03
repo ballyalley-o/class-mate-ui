@@ -39,16 +39,16 @@ const Hero = () => {
             h={24}
           />
           <p className='italic regular-14'>
-            got your account? <b>Sign-In</b> instead
+            got your account? <b>Sign-In</b> here ☡
           </p>
         </div>
       </div>
 
       <div className='relative flex flex-1 items-start'>
-        <div className='relative z-20 w-[268px] flex-col gap-8 rounded-lg bg-gray-800 px-7 py-8'>
+        <div className='relative z-20 flex w-[268px] flex-col gap-8 rounded-lg bg-gray-800 px-7 py-8'>
           <div className='flex flex-col'>
             <div className='flexBetween'>
-              <p className='regular-16 text-gray-20'>Students</p>
+              <p className='regular-16 block text-gray-20'>Students</p>
               <Image
                 src='/assets/svg/book.svg'
                 alt='book'
@@ -56,12 +56,17 @@ const Hero = () => {
                 height={24}
               />
             </div>
+            <p className='bold-20 text-white'>45</p>
+          </div>
 
-            <div className='flexBetween'>
-              <div className='flex flex-col'>
-                <p className=''>Module-3</p>
-                <p className=''>p.78-90</p>
-              </div>
+          <div className='flexBetween'>
+            <div className='flex flex-col'>
+              <p className='regular-16 block text-gray-20'>Module-3</p>
+              <p className='bold-12 text-white'>p.78-90</p>
+            </div>
+            <div className='flex flex-col'>
+              <p className='regular-16 block text-gray-20'>Module-2</p>
+              <p className='bold-20 text-white'>7%</p>
             </div>
           </div>
         </div>
