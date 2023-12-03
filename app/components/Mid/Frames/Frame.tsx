@@ -19,7 +19,7 @@ const Frame = ({ bgImage, title, subtitle, data }: Frame) => {
           <div className='rounded-full bg-white p-4'>
             <Image src='/folded-map.svg' alt='books' width={28} height={28} />
           </div>
-          <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-1'>
             <h4 className='bold-18 text-white'>{title}</h4>
             <p className='regular-14 text-white'>{subtitle}</p>
           </div>
