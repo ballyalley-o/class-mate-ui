@@ -26,8 +26,9 @@ const config: Config = {
         'neutral-black': '#23263B',
       },
       backgroundImage: {
-        'bg-img': "url('/img-1.png')",
-        'bg-img-0': "url('/img-2.png')",
+        'bg-img': "url('/assets/bg/bg-img-1.jpg')",
+        'bg-img-2': "url('/assets/bg/bg-img-2.jpg')",
+        'bg-img-3': "url('/assets/bg/bg-img-3.jpg')",
         pattern: "url('/pattern.png')",
         'pattern-2': "url('/assets/images/pattern-bg.png')",
         'pattern-bg': "url('/pattern-bg.png')",
