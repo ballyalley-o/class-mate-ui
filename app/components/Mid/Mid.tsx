@@ -20,8 +20,8 @@ const Mid = () => {
         />
       </div>
 
-      <div className='flexEnd mt-10 px-6 lg:mt-60 lg:mr-6'>
-        <div className='bg-gray-900 p-8 lg:max-w-[500px] xl:max-w-[734px] xl:rounded-lg xl:px-16 xl:py-20 relative w-full overflow-hidden rounded-lg'>
+      <div className='flexEnd mt-10 px-6 lg:-mt-60 lg:mr-6'>
+        <div className='bg-gray-900 p-8 lg:max-w-[500px] xl:max-w-[734px] xl:rounded-5xl xl:px-16 xl:py-20 relative w-full overflow-hidden rounded-lg'>
           <h2 className='regular-24 md:regular-32 2xl:regular-64 capitalize text-white'>
             <strong>You Missed the Class?</strong> Check the class recording
             here!
