@@ -2,6 +2,9 @@ import '@globals'
 import type { Metadata } from 'next'
 import { Kenia, Oswald } from 'next/font/google'
 import { LANG } from '@config'
+// @clerk
+import { ClerkProvider } from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
 // @components
 import { Navbar, Footer } from '@components'
 
@@ -25,14 +28,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang={LANG.en}>
-      <body className={oswald.className}>
-        <main className='relative overflow-hidden'>
-          <Navbar />
-          {children}
-          <Footer />
-        </main>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
+      <html lang={LANG.en}>
+        <body className={oswald.className}>
+          <main className='relative overflow-hidden'>
+            <Navbar />
+            {children}
+            <Footer />
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
