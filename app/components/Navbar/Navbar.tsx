@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import * as _ from '@assets/styles/navbar'
-import NavBrand from './NavBrand'
-import { Button } from '@components'
+import NavBrand from '@components/Navbar/NavBrand'
+// @clerk
+import { UserButton, auth } from '@clerk/nextjs'
+import { Button, LinkWrap } from '@components'
 import { NAV } from '@constants'
 
 const Navbar = () => {
+  const { userId } = auth()
   return (
     <nav className={_.StyledNav}>
       <NavBrand />
@@ -22,15 +25,24 @@ const Navbar = () => {
       </ul>
 
       <div className='lg:flexCenter hidden'>
-        <Button
-          title='SIGN IN'
-          icon='rocket.svg'
-          type='button'
-          variant='btn_dark_green'
-          w={18}
-          h={18}
-          // className='inline-block cursor'
-        />
+        {!userId ? (
+          <Link href='/sign-in'>
+            <Button
+              title='SIGN IN'
+              icon='rocket.svg'
+              type='button'
+              variant='btn_dark_green'
+              w={18}
+              h={18}
+              // className='inline-block cursor'
+            />
+          </Link>
+        ) : (
+          <LinkWrap href='/profile' content='Profile' />
+        )}
+        <div className='ml-auto'>
+          <UserButton afterSignOutUrl='/' />
+        </div>
       </div>
 
       <Image
