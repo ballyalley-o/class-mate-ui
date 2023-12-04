@@ -1,5 +1,6 @@
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { GLOBAL } from '@config'
 import { Button } from '@components'
 import { BRAND } from '@constants'
@@ -10,13 +11,6 @@ const Hero = () => {
       <div className='hero-card' />
 
       <div className='relative z-20 flex flex-1 flex-col xl:w-1/2'>
-        {/* <Image
-          src={GLOBAL.brand.icon.svg}
-          alt='rocket'
-          width={50}
-          height={50}
-          className='absolute right-[20px] lg:left-[20px] top-[230px] lg:top-[-40px] w-60 lg:w-[60px] -z-10'
-        /> */}
         <h1 className='pt-5 bold-52 lg:bold-88'>{BRAND.hero_title}</h1>
         <p className='regular-16 mt-6 text-gray-20 xl:max-w-[520px]'>
           {BRAND.description}
@@ -29,7 +23,6 @@ const Hero = () => {
         </div>
 
         <div className='flex flex-col w-64 regular-12 gap-3 flex-row'>
-          {/* <Button type='button' title='SIGN IN' variant='btn_green' /> */}
           <Button
             type='button'
             title='REQUEST FOR AN INVITE'
@@ -39,7 +32,11 @@ const Hero = () => {
             h={24}
           />
           <p className='italic regular-14'>
-            got your account? <b>Sign-In</b> here ☡
+            got your account?
+            <Link href='/sign-in'>
+              &nbsp; <b> Sign-In </b> &nbsp;
+            </Link>
+            here ☡
           </p>
         </div>
       </div>
