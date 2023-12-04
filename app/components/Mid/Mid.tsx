@@ -9,7 +9,7 @@ const Mid = () => {
         <Frame
           bgImage='bg-bg-img-2'
           title='10-10 Cohort'
-          subtitle='Software Engineerin'
+          subtitle='Software Engineering'
           data='18+ Students'
         />
         <Frame
