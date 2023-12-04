@@ -12,3 +12,5 @@ export { default as Hero } from '@components/Hero/Hero'
 export { default as Exercises } from '@components/Exercises/Exercises'
 // @mid
 export { default as Mid } from '@components/Mid/Mid'
+// @default
+export { default as LinkWrap } from '@components/Default/LinkWrap'
