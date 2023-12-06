@@ -31,18 +31,28 @@ const AboutPage = () => {
           alt='wires'
           width={1440}
           height={580}
-          className='w-full object-cover object-center 2xl:rounded-5xl'
+          className='w-full object-cover object-center xl:rounded-5xl lg:w-auto rounded-xl'
         />
 
-        <div className='absolute flex-bg-white py-8 pl-5 pr-7 rounded-3xl border shadow-md md:lef-[5%] lg:top-20'>
+        <div className='absolute flex-bg-white py-8 pl-5 pr-7 rounded-3xl border shadow-md md:left-[5%] lg:bottom-90'>
           <div className='flexBetween flex-col'>
             <div className='flex w-full flex-col'>
-              <div className='flexBetween w-full'>
+              <div className='flexCenter w-full'>
+                <Image
+                  src='/assets/svg/pipeline.svg'
+                  alt='pipeline'
+                  width={16}
+                  height={158}
+                  className='w-auto h-48'
+                />
                 <p className='regular-16 text-gray-20'>Dream Job</p>
                 <p className='bold-16 text-green-50'>Software Engineering</p>
+                <p className='regular-16 text-gray-20'>Start track</p>
+                <h4 className='bold-20 mt-2 whitespace-nowrap'>Dummy</h4>
               </div>
-              <p className='bold-20 mt-2 whitespace-nowrap'>Somewhere</p>
             </div>
+
+            <div className='flex w-full flex-col'></div>
           </div>
         </div>
       </div>
