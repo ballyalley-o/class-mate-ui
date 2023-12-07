@@ -27,9 +27,10 @@ const Hero = () => {
             type='button'
             title='REQUEST FOR AN INVITE'
             variant='btn_green'
-            icon='play.svg'
+            icon='send.svg'
             w={24}
             h={24}
+            iconClassName='-rotate-45'
           />
           <p className='italic regular-14'>
             got your account?
