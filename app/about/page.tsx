@@ -27,14 +27,14 @@ const AboutPage = () => {
 
       <div className='flexCenter max-container w-full'>
         <Image
-          src='/assets/bg/bg-img-18.jpg'
+          src='/assets/bg/bg-img-14.jpg'
           alt='wires'
           width={1440}
           height={580}
           className='w-full object-cover object-center xl:rounded-5xl lg:w-auto rounded-xl'
         />
 
-        <div className='absolute flex-bg-white py-8 pl-5 pr-7 rounded-3xl border shadow-md md:left-[5%] lg:bottom-90'>
+        <div className='absolute flex-bg-white py-8 pl-5 pr-7 rounded-3xl shadow-md bottom-50 md:left-[55%] border'>
           <div className='flexBetween flex-col'>
             <div className='flex w-full flex-col'>
               <div className='flexCenter w-full'>
@@ -45,10 +45,14 @@ const AboutPage = () => {
                   height={158}
                   className='w-auto h-48'
                 />
-                <p className='regular-16 text-gray-20'>Dream Job</p>
-                <p className='bold-16 text-green-50'>Software Engineering</p>
-                <p className='regular-16 text-gray-20'>Start track</p>
-                <h4 className='bold-20 mt-2 whitespace-nowrap'>Dummy</h4>
+                <div className='flex-row '>
+                  <p className='regular-16 text-gray-20 pb-2'>Dream Job</p>
+                  <p className='bold-16 text-green-50 pb-2'>
+                    Software Engineering
+                  </p>
+                  <p className='regular-16 text-gray-20'>Start track</p>
+                  <h4 className='bold-20 mt-2 whitespace-nowrap'>Dummy</h4>
+                </div>
               </div>
             </div>
 
