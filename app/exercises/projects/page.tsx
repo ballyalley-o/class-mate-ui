@@ -1,12 +1,12 @@
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
 import { PROJECTS } from '@constants'
 import { ProjectItem } from '@components'
 
 const Projects = () => {
   return (
     <section className='flex-col flexCenter overflow-hidden bg-projects bg-center bg-no-repeat py-24'>
-      <div className='max-container padding-container relative w-full justify-end'>
+      <div className='max-container padding-container relative w-full flex justify-end'>
         <div className='flex flex-1 lg:min-h-[900px]'>
           <Image
             src='/assets/images/rocket.png'
@@ -27,7 +27,7 @@ const Projects = () => {
             />
             <h2 className='bold-40 lg:bold-64'>Projects</h2>
           </div>
-          <ul>
+          <ul className='mt-10 grid gap-10 md:grid-cols-2 lg:mg-20 lg:gap-20 pt-10'>
             {PROJECTS.map((project) => (
               <ProjectItem
                 key={project.topic}
