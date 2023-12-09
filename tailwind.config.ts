@@ -12,6 +12,7 @@ const config: Config = {
         primary: {
           default: '#FF751A',
           yellow: '#FFFC53',
+          blue: '#0528F2',
         },
         secondary: '#C146E8',
         'gray-200': '#EAECF0',
@@ -29,6 +30,7 @@ const config: Config = {
         'bg-img': "url('/assets/bg/bg-img-1.jpg')",
         'bg-img-2': "url('/assets/bg/bg-img-2.jpg')",
         'bg-img-3': "url('/assets/bg/bg-img-3.jpg')",
+        projects: "url('/assets/images/gradient-bg.png')",
         pattern: "url('/pattern.png')",
         'pattern-2': "url('/assets/images/pattern-bg.png')",
         'pattern-bg': "url('/pattern-bg.png')",
