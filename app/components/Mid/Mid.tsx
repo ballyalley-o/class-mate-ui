@@ -33,10 +33,10 @@ const Mid = () => {
             Dolore, velit nobis.
           </p>
           <Image
-            src='/assets/svg/quote.svg'
+            src='/assets/svg/recording-2.svg'
             alt='quote'
-            width={186}
-            height={219}
+            width={300}
+            height={400}
             className='float-quote'
           />
         </div>
