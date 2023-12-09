@@ -171,7 +171,7 @@ body {
   }
 
   /* Feature */
-  .feature-phone {
+  .projects-float {
     @apply absolute top-[13%] z-10 hidden max-w-[1500px] rotate-[15deg] md:-left-16 lg:flex  3xl:left-20;
   }
 
