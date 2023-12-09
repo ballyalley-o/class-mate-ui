@@ -18,7 +18,7 @@ const ProjectItem = ({
 }: ProjectItem) => {
   return (
     <li className='flex w-full flex-1 flex-col items-start'>
-      <div className={`rounded-full p-2 lg:p-4 bg-${variant}`}>
+      <div className={`rounded-xl p-2 lg:p-3 ${variant}`}>
         <Image
           src={`/assets/svg/${icon}.svg`}
           alt={icon}
@@ -26,6 +26,10 @@ const ProjectItem = ({
           height={28}
         />
       </div>
+      <h2 className='bold-20 lg:bold-32 mt-5 capitalize'>{topic}</h2>
+      <p className='regular-16 mt- text-gray-30 lg:mt-[30px] lg:bg-none'>
+        {description}
+      </p>
     </li>
   )
 }
