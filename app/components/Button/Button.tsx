@@ -8,7 +8,7 @@ type ButtonProps = {
   variant: string | 'btn_dark_green'
   w?: number | 24
   h?: number | 24
-  iconClassName: string
+  iconClassName?: string
 }
 
 const Button = ({
