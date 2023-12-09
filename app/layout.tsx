@@ -20,6 +20,9 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: 'ClassMate',
   description: 'Your assistant in learning',
+  icons: {
+    icon: '/classmate.ico'
+  }
 }
 
 export default function RootLayout({
