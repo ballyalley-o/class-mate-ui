@@ -25,7 +25,8 @@ const Projects = () => {
               height={100}
               className='absolute lg:left-[210px] top-[10px] w-10 xs:left-[130px] lg:w-[50px]'
             />
-            <h2 className='bold-40 lg:bold-64'>Projects</h2>
+            <h2 className='bold-40 lg:bold-64 mb-5'>Projects</h2>
+            <hr />
           </div>
           <ul className='mt-10 grid gap-10 md:grid-cols-2 lg:mg-20 lg:gap-20 pt-10'>
             {PROJECTS.map((project) => (
