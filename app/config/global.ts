@@ -4,7 +4,7 @@ const GLOBAL = {
   api: process.env.API_URL,
   brand: {
     logo: '/assets/brand/classmate-main.svg',
-    logo_secondary: '/assets/brand/classmate-ico.ico',
+    logo_secondary: '/assets/brand/classmate-ico.svg',
     man: '/assets/brand/classmate-man.svg',
     text: '/assets/brand/classmate-text.svg',
     icon: {
