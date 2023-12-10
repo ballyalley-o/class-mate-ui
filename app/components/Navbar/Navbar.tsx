@@ -1,3 +1,6 @@
+'use client'
+
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as _ from '@assets/styles/navbar'
@@ -7,8 +10,17 @@ import { UserButton, auth } from '@clerk/nextjs'
 import { Button, LinkWrap } from '@components'
 import { NAV } from '@constants'
 
-const Navbar = () => {
-  const { userId } = auth()
+type Navbar = {
+  auth?: string | null
+}
+
+const Navbar = ({ auth }: Navbar) => {
+  const [isMobileMenu, setIsMobileMenu] = useState(false)
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenu(!isMobileMenu)
+  }
+
   return (
     <nav className={_.StyledNav}>
       <NavBrand />
@@ -25,11 +37,11 @@ const Navbar = () => {
       </ul>
 
       <div className='lg:flexCenter hidden'>
-        {!userId ? (
+        {!auth ? (
           <Link href='/sign-in'>
             <Button
               title='SIGN IN'
-              icon='rocket.svg'
+              icon='rocket'
               type='button'
               variant='btn_dark_green'
               w={18}
@@ -45,13 +57,53 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* TODO: dropdown mobile menu for navbar items */}
+      {/* mobile menu */}
       <Image
         src='/assets/svg/menu-sm.svg'
         alt='menu-mobile'
         width={32}
         height={32}
         className='inline-block cursor-pointer lg:hidden'
+        onClick={toggleMobileMenu}
       />
+
+      {/* mobile dropdown */}
+      {isMobileMenu && (
+        <ul className='lg:hidden'>
+          {NAV.map((link) => (
+            <Link
+              href={link.href}
+              key={link.key}
+              className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1 transition-all ease-in-out'
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {!auth ? (
+            <li>
+              <Link href='/sign-in'>
+                <Button
+                  title='SIGN IN'
+                  icon='rocket'
+                  type='button'
+                  variant='btn_dark_green'
+                  w={18}
+                  h={18}
+                />
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <LinkWrap href='/profile' content='Profile' />
+            </li>
+          )}
+          <li>
+            <UserButton afterSignOutUrl='/' />
+          </li>
+        </ul>
+      )}
     </nav>
   )
 }
