@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Kenia, Oswald } from 'next/font/google'
 import { LANG } from '@config'
 // @clerk
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider, auth } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 // @components
 import { Navbar, Footer } from '@components'
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   title: 'ClassMate',
   description: 'Your assistant in learning',
   icons: {
-    icon: '/classmate.ico'
-  }
+    icon: '/classmate.ico',
+  },
 }
 
 export default function RootLayout({
@@ -30,6 +30,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { userId } = auth()
   return (
     <ClerkProvider
       appearance={{
@@ -39,7 +40,7 @@ export default function RootLayout({
       <html lang={LANG.en}>
         <body className={oswald.className}>
           <main className='relative overflow-hidden'>
-            <Navbar />
+            <Navbar auth={userId} />
             {children}
             <Footer />
           </main>
