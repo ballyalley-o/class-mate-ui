@@ -19,11 +19,11 @@ const Footer = () => {
             />
           </Link>
           <div className='flex flex-wrap gap-10 sm:justify-between md:flex-1'>
-            {FOOTER.map((column) => (
-              <FooterColumn title={column.title}>
+            {FOOTER.map((column, index) => (
+              <FooterColumn key={index} title={column.title}>
                 <ul className='regular-14 flex flex-col gap-4 text-gray-30'>
-                  {column.links.map((link) => (
-                    <Link href='/' key={link}>
+                  {column.links.map((link, index) => (
+                    <Link href='/' key={index}>
                       {link}
                     </Link>
                   ))}
@@ -32,10 +32,10 @@ const Footer = () => {
             ))}
             <div className='flex flex-col gap-5'>
               <FooterColumn title={CONTACT_US.title}>
-                {CONTACT_US.links.map((link) => (
+                {CONTACT_US.links.map((link, index) => (
                   <Link
                     href='/'
-                    key={link.label}
+                    key={index}
                     className='flex gap-4 md:flex-col lg:flex-row'
                   >
                     <p className='whitespace-nowrap'>{link.label}:</p>
@@ -49,8 +49,8 @@ const Footer = () => {
             <div className='flex flex-col gap-5'>
               <FooterColumn title={SOCIALS.title}>
                 <ul className='regular-14 flex gap-4 text-gray-30'>
-                  {SOCIALS.links.map((link) => (
-                    <Link href='/' key={link}>
+                  {SOCIALS.links.map((link, index) => (
+                    <Link href='/' key={index}>
                       <Image
                         src={`/assets/svg/socials/${link}.svg`}
                         alt='brand-logos'
