@@ -28,7 +28,7 @@ const Button = ({
     >
       {icon && (
         <Image
-          src={`/assets/svg/${icon}`}
+          src={`/assets/svg/${icon}.svg`}
           alt={title}
           width={w}
           height={h}
