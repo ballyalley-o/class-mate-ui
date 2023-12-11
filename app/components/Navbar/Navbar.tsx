@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import * as _ from '@assets/styles/navbar'
@@ -14,15 +14,39 @@ type Navbar = {
   auth?: string | null
 }
 
-const Navbar = ({ auth }: Navbar) => {
+const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null)
 
   const toggleMobileMenu = () => {
-    setIsMobileMenu(!isMobileMenu)
+    console.log('clicked')
+    setIsMobileMenu((prevState) => !prevState)
   }
 
+  const closeMobileMenu = () => {
+    setIsMobileMenu(false)
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        closeMobileMenu()
+      }
+    }
+
+    if (isMobileMenu) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMobileMenu])
+
   return (
-    <nav className={_.StyledNav}>
+    <nav className={_.StyledNav} style={{ position: 'relative' }}>
       <NavBrand />
       <ul className='hidden h-full gap-12 lg:flex'>
         {NAV.map((link) => (
@@ -59,50 +83,67 @@ const Navbar = ({ auth }: Navbar) => {
 
       {/* TODO: dropdown mobile menu for navbar items */}
       {/* mobile menu */}
-      <Image
-        src='/assets/svg/menu-sm.svg'
-        alt='menu-mobile'
-        width={32}
-        height={32}
-        className='inline-block cursor-pointer lg:hidden'
+
+      <div
         onClick={toggleMobileMenu}
-      />
+        className='cursor-pointer lg:hidden z-51'
+        style={{ position: 'relative', zIndex: 51 }}
+      >
+        <Image
+          src='/assets/svg/menu-sm.svg'
+          alt='menu-mobile'
+          width={32}
+          height={32}
+          className='inline-block'
+        />
+      </div>
 
       {/* mobile dropdown */}
       {isMobileMenu && (
-        <ul className='lg:hidden'>
-          {NAV.map((link) => (
-            <Link
-              href={link.href}
-              key={link.key}
-              className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1 transition-all ease-in-out'
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          {!auth ? (
-            <li>
-              <Link href='/sign-in'>
-                <Button
-                  title='SIGN IN'
-                  icon='rocket'
-                  type='button'
-                  variant='btn_dark_green'
-                  w={18}
-                  h={18}
-                />
+        <div
+          ref={mobileMenuRef}
+          className={`absolute top-0 left-0 w-full bg-black/60 z-50 pt-10  backdrop-filter backdrop-blur-md transition-transform duration-300 transform ${
+            isMobileMenu ? 'translate-y-0' : 'translate-y-full'
+          }`}
+          style={{
+            boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.5)',
+          }}
+        >
+          <ul className='lg:hidden'>
+            {NAV.map((link) => (
+              <Link
+                href={link.href}
+                key={link.key}
+                className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1 transition-all ease-in-out'
+                onClick={closeMobileMenu}
+              >
+                {link.label}
               </Link>
-            </li>
-          ) : (
+            ))}
+
+            {!auth ? (
+              <li>
+                <Link href='/sign-in'>
+                  <Button
+                    title='SIGN IN'
+                    icon='rocket'
+                    type='button'
+                    variant='btn_dark_green'
+                    w={18}
+                    h={18}
+                  />
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <LinkWrap href='/profile' content='Profile' />
+              </li>
+            )}
             <li>
-              <LinkWrap href='/profile' content='Profile' />
+              <UserButton afterSignOutUrl='/' />
             </li>
-          )}
-          <li>
-            <UserButton afterSignOutUrl='/' />
-          </li>
-        </ul>
+          </ul>
+        </div>
       )}
     </nav>
   )
