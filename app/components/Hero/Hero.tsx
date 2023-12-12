@@ -11,7 +11,9 @@ const Hero = () => {
       <div className='hero-card' />
 
       <div className='relative z-20 flex flex-1 flex-col xl:w-1/2'>
-        <h1 className='pt-5 bold-52 lg:bold-88'>{BRAND.hero_title}</h1>
+        <h1 className='pt-5 bold-52 font-staatliches lg:bold-88'>
+          {BRAND.hero_title}
+        </h1>
         <p className='regular-16 mt-6 text-gray-20 xl:max-w-[520px]'>
           {BRAND.description}
         </p>
@@ -22,7 +24,7 @@ const Hero = () => {
           <p className='bold-16 lg:bold-20 text-blue-70'>&nbsp;</p>
         </div>
 
-        <div className='flex flex-col w-64 regular-12 gap-3 flex-row'>
+        <div className='flex flex-col lg:w-80  xs:w-auto regular-8 gap-3 flex-row'>
           <Button
             type='button'
             title='REQUEST FOR AN INVITE'
@@ -30,14 +32,14 @@ const Hero = () => {
             icon='send'
             w={24}
             h={24}
-            iconClassName='-rotate-45'
+            iconClassName='-rotate-45 font-bold'
           />
           <p className='italic regular-14'>
             got your account?
             <Link href='/sign-in'>
               &nbsp; <b> Sign-In </b> &nbsp;
             </Link>
-            here ☡
+            here
           </p>
         </div>
       </div>
