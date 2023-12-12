@@ -1,6 +1,6 @@
 import '@globals'
 import type { Metadata } from 'next'
-import { Kenia, Oswald } from 'next/font/google'
+import { Kenia, Staatliches, Roboto } from 'next/font/google'
 import { LANG } from '@config'
 // @clerk
 import { ClerkProvider, auth } from '@clerk/nextjs'
@@ -12,9 +12,14 @@ const kenia = Kenia({
   subsets: ['latin'],
   weight: ['400'],
 })
-const oswald = Oswald({
+const roboto = Roboto({
   subsets: ['latin'],
-  weight: ['200', '300', '500', '700'],
+  weight: ['100', '300', '500', '700'],
+})
+
+const staatliches = Staatliches({
+  subsets: ['latin'],
+  weight: ['400'],
 })
 
 export const metadata: Metadata = {
@@ -38,7 +43,7 @@ export default function RootLayout({
       }}
     >
       <html lang={LANG.en}>
-        <body className={oswald.className}>
+        <body className={roboto.className}>
           <main className='relative overflow-hidden'>
             <Navbar auth={userId} />
             {children}

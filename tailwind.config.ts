@@ -1,3 +1,4 @@
+import { Roboto } from 'next/font/google'
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -48,7 +49,8 @@ const config: Config = {
       },
       fontFamily: {
         kenia: ['Kenia', 'sans-serif'],
-        oswald: ['Oswald', 'sans-serif'],
+        staatliches: ['Staatliches', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       borderRadius: {
         5: '5px',
