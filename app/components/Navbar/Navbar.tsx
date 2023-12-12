@@ -19,8 +19,15 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
 
   const toggleMobileMenu = () => {
-    console.log('clicked')
     setIsMobileMenu((prevState) => !prevState)
+  }
+
+  const handleMenuButtonClick = () => {
+    if (isMobileMenu) {
+      closeMobileMenu()
+    } else {
+      toggleMobileMenu()
+    }
   }
 
   const closeMobileMenu = () => {
@@ -28,6 +35,7 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
   }
 
   useEffect(() => {
+    // TODO: when currently on dropdown, if i click the menu again, retract the dropdown
     const handleClickOutside = (event: MouseEvent) => {
       if (
         mobileMenuRef.current &&
@@ -85,17 +93,27 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
       {/* mobile menu */}
 
       <div
-        onClick={toggleMobileMenu}
+        onClick={handleMenuButtonClick}
         className='cursor-pointer lg:hidden z-51'
         style={{ position: 'relative', zIndex: 51 }}
       >
-        <Image
-          src='/assets/svg/menu-sm.svg'
-          alt='menu-mobile'
-          width={32}
-          height={32}
-          className='inline-block'
-        />
+        {isMobileMenu ? (
+          <Image
+            src='/assets/svg/up.svg'
+            alt='menu-mobile'
+            width={32}
+            height={32}
+            className='inline-block'
+          />
+        ) : (
+          <Image
+            src='/assets/svg/menu-sm.svg'
+            alt='menu-mobile'
+            width={32}
+            height={32}
+            className='inline-block'
+          />
+        )}
       </div>
 
       {/* mobile dropdown */}
@@ -109,18 +127,22 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
             boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.5)',
           }}
         >
-          <ul className='lg:hidden'>
+          {/* TODO: Blur the entire page under the dropdown when pressed */}
+          <ul className='lg:hidden ml-5'>
             {NAV.map((link) => (
               <Link
                 href={link.href}
                 key={link.key}
-                className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1 transition-all ease-in-out'
-                onClick={closeMobileMenu}
+                className='light-14 hover:regular-18 text-gray-500  hover:text-gray-100 flex-start cursor-pointer pb-1 transition-all ease-in-out'
+                onClick={(event: React.MouseEvent) => {
+                  event.preventDefault()
+                  closeMobileMenu()
+                }}
               >
-                {link.label}
+                <div className='h-12'> {link.label}</div>
               </Link>
             ))}
-
+            <hr className='bg-gray-700' />
             {!auth ? (
               <li>
                 <Link href='/sign-in'>
@@ -135,13 +157,17 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
                 </Link>
               </li>
             ) : (
-              <li>
-                <LinkWrap href='/profile' content='Profile' />
-              </li>
+              <div className='flex flex-row space-x-3 gap-2 m-5'>
+                <span>
+                  <li>
+                    <UserButton afterSignOutUrl='/' />
+                  </li>
+                </span>
+                <li>
+                  <LinkWrap href='/profile' content='Profile' />
+                </li>
+              </div>
             )}
-            <li>
-              <UserButton afterSignOutUrl='/' />
-            </li>
           </ul>
         </div>
       )}
