@@ -5,29 +5,26 @@ import Image from 'next/image'
 import Link from 'next/link'
 import * as _ from '@assets/styles/navbar'
 import NavBrand from '@components/Navbar/NavBrand'
+import { motion } from 'framer-motion'
 // @clerk
 import { UserButton, auth } from '@clerk/nextjs'
 import { Button, LinkWrap } from '@components'
 import { NAV } from '@constants'
+// @utils
+import { delay } from '@utils'
 
 type Navbar = {
   auth?: string | null
+  actor?: string | null
 }
 
-const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
+const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
+  const userProfileRef = useRef<HTMLDivElement | null>(null)
 
   const toggleMobileMenu = () => {
     setIsMobileMenu((prevState) => !prevState)
-  }
-
-  const handleMenuButtonClick = () => {
-    if (isMobileMenu) {
-      closeMobileMenu()
-    } else {
-      toggleMobileMenu()
-    }
   }
 
   const closeMobileMenu = () => {
@@ -37,11 +34,16 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
   useEffect(() => {
     // TODO: when currently on dropdown, if i click the menu again, retract the dropdown
     const handleClickOutside = (event: MouseEvent) => {
+      const clickedElement = event.target as Node
+
       if (
+        isMobileMenu &&
         mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target as Node)
+        !mobileMenuRef.current.contains(clickedElement) &&
+        userProfileRef.current &&
+        !userProfileRef.current.contains(clickedElement)
       ) {
-        closeMobileMenu()
+        toggleMobileMenu()
       }
     }
 
@@ -63,7 +65,7 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
             key={link.key}
             className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
           >
-            {link.label}
+            <motion.div>{link.label}</motion.div>
           </Link>
         ))}
       </ul>
@@ -78,34 +80,25 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
               variant='btn_dark_green'
               w={18}
               h={18}
-              // className='inline-block cursor'
             />
           </Link>
         ) : (
           <LinkWrap href='/profile' content='Profile' />
         )}
-        <div className='ml-auto'>
+        <motion.div className='ml-auto'>
           <UserButton afterSignOutUrl='/' />
-        </div>
+        </motion.div>
       </div>
 
       {/* TODO: dropdown mobile menu for navbar items */}
       {/* mobile menu */}
 
       <div
-        onClick={handleMenuButtonClick}
-        className='cursor-pointer lg:hidden z-51'
+        onClick={toggleMobileMenu}
+        className='cursor-pointer lg:hidden z-51  transition-transform'
         style={{ position: 'relative', zIndex: 51 }}
       >
-        {isMobileMenu ? (
-          <Image
-            src='/assets/svg/up.svg'
-            alt='menu-mobile'
-            width={32}
-            height={32}
-            className='inline-block'
-          />
-        ) : (
+        {!isMobileMenu && (
           <Image
             src='/assets/svg/menu-sm.svg'
             alt='menu-mobile'
@@ -128,14 +121,14 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
           }}
         >
           {/* TODO: Blur the entire page under the dropdown when pressed */}
-          <ul className='lg:hidden ml-5'>
+          <motion.ul className='lg:hidden ml-5'>
             {NAV.map((link) => (
               <Link
                 href={link.href}
                 key={link.key}
                 className='light-14 hover:regular-18 text-gray-500  hover:text-gray-100 flex-start cursor-pointer pb-1 transition-all ease-in-out'
-                onClick={(event: React.MouseEvent) => {
-                  event.preventDefault()
+                onClick={async () => {
+                  await delay(400)
                   closeMobileMenu()
                 }}
               >
@@ -144,7 +137,7 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
             ))}
             <hr className='bg-gray-700' />
             {!auth ? (
-              <li>
+              <motion.li>
                 <Link href='/sign-in'>
                   <Button
                     title='SIGN IN'
@@ -155,20 +148,34 @@ const Navbar: React.FC<Navbar> = ({ auth }: Navbar) => {
                     h={18}
                   />
                 </Link>
-              </li>
+              </motion.li>
             ) : (
-              <div className='flex flex-row space-x-3 gap-2 m-5'>
-                <span>
+              <div className='flex flex-row justify-between space-x-3 gap-2 m-5 '>
+                <motion.div className=''>
                   <li>
-                    <UserButton afterSignOutUrl='/' />
+                    <motion.div>
+                      <LinkWrap href='/profile' content={actor} />
+                    </motion.div>
                   </li>
-                </span>
-                <li>
-                  <LinkWrap href='/profile' content='Profile' />
-                </li>
+                  <span>
+                    <li>
+                      <motion.div className='ml-auto' ref={userProfileRef}>
+                        <UserButton afterSignOutUrl='/' />
+                      </motion.div>
+                    </li>
+                  </span>
+                </motion.div>
+                <Image
+                  src='/assets/svg/up.svg'
+                  alt='menu-mobile'
+                  width={32}
+                  height={32}
+                  className='cursor-pointer'
+                  onClick={toggleMobileMenu}
+                />
               </div>
             )}
-          </ul>
+          </motion.ul>
         </div>
       )}
     </nav>
