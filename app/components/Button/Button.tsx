@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 type ButtonProps = {
   title: string
@@ -32,7 +33,7 @@ const Button = ({
           alt={title}
           width={w}
           height={h}
-          className={iconClassName}
+          className={`${iconClassName} transition-transform hover:scale-150 hover:rotate-12`}
         />
       )}
       <label className='bold-14 whitespace-nowrap'>{title}</label>
