@@ -29,7 +29,7 @@ const Hero = () => {
             type='button'
             title='REQUEST FOR AN INVITE'
             variant='btn_green'
-            icon='send'
+            icon='go'
             w={24}
             h={24}
             iconClassName='-rotate-45 font-bold'
