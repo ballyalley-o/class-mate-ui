@@ -35,7 +35,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const { userId } = auth()
+  const { userId, actor } = auth()
   return (
     <ClerkProvider
       appearance={{
@@ -45,7 +45,7 @@ export default function RootLayout({
       <html lang={LANG.en}>
         <body className={roboto.className}>
           <main className='relative overflow-hidden'>
-            <Navbar auth={userId} />
+            <Navbar auth={userId} actor={actor} />
             {children}
             <Footer />
           </main>
