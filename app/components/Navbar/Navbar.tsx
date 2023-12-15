@@ -15,11 +15,12 @@ import { delay } from '@utils'
 
 type Navbar = {
   auth?: string | null
-  actor?: string | null
+  actor?: null
 }
 
 const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const [isUserBtn, setIsUserBtn] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
   const userProfileRef = useRef<HTMLDivElement | null>(null)
 
@@ -35,7 +36,6 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
     // TODO: when currently on dropdown, if i click the menu again, retract the dropdown
     const handleClickOutside = (event: MouseEvent) => {
       const clickedElement = event.target as Node
-
       if (
         isMobileMenu &&
         mobileMenuRef.current &&
@@ -47,13 +47,15 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
       }
     }
 
-    if (isMobileMenu) {
+    if (isMobileMenu && !isUserBtn) {
       document.addEventListener('mousedown', handleClickOutside)
     }
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      if (isMobileMenu && !isUserBtn) {
+        document.removeEventListener('mousedown', handleClickOutside)
+      }
     }
-  }, [isMobileMenu])
+  }, [isMobileMenu, isUserBtn])
 
   return (
     <nav className={_.StyledNav} style={{ position: 'relative' }}>
@@ -65,28 +67,26 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
             key={link.key}
             className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
           >
-            <motion.div>{link.label}</motion.div>
+            <motion.div className='w-20'>{link.label}</motion.div>
           </Link>
         ))}
       </ul>
 
       <div className='lg:flexCenter hidden'>
-        {!auth ? (
+        {!auth && (
           <Link href='/sign-in'>
             <Button
               title='SIGN IN'
               icon='rocket'
               type='button'
-              variant='btn_dark_green'
+              variant='btn_regular'
               w={18}
               h={18}
             />
           </Link>
-        ) : (
-          <LinkWrap href='/profile' content='Profile' />
         )}
         <motion.div className='ml-auto'>
-          <UserButton afterSignOutUrl='/' />
+          <UserButton afterSignOutUrl='/' showName />
         </motion.div>
       </div>
 
@@ -137,42 +137,58 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
             ))}
             <hr className='bg-gray-700' />
             {!auth ? (
-              <motion.li>
-                <Link href='/sign-in'>
+              <motion.li className='flex flex-end justify-between'>
+                <Image
+                  src='/assets/svg/up.svg'
+                  alt='menu-mobile'
+                  width={18}
+                  height={18}
+                  className='cursor-pointer'
+                  onClick={toggleMobileMenu}
+                />
+                <Link
+                  href='/sign-in'
+                  className='cursor-pointer'
+                  onClick={async () => {
+                    await delay(400)
+                    closeMobileMenu()
+                  }}
+                >
                   <Button
                     title='SIGN IN'
                     icon='rocket'
                     type='button'
-                    variant='btn_dark_green'
+                    variant='btn_mini cursor-pointer'
                     w={18}
                     h={18}
                   />
                 </Link>
               </motion.li>
             ) : (
-              <div className='flex flex-row justify-between space-x-3 gap-2 m-5 '>
-                <motion.div className=''>
-                  <li>
-                    <motion.div>
-                      <LinkWrap href='/profile' content={actor} />
-                    </motion.div>
-                  </li>
+              <div className='flex flex-row justify-between space-x-3 gap-2 my-5 mr-5 '>
+                <Image
+                  src='/assets/svg/up.svg'
+                  alt='menu-mobile'
+                  width={18}
+                  height={18}
+                  className='cursor-pointer'
+                  onClick={toggleMobileMenu}
+                />
+                <motion.div>
                   <span>
                     <li>
-                      <motion.div className='ml-auto' ref={userProfileRef}>
-                        <UserButton afterSignOutUrl='/' />
+                      <motion.div
+                        className='ml-auto flex justify-end'
+                        ref={userProfileRef}
+                        onClick={() => {
+                          setIsUserBtn(true)
+                        }}
+                      >
+                        <UserButton afterSignOutUrl='/' showName />
                       </motion.div>
                     </li>
                   </span>
                 </motion.div>
-                <Image
-                  src='/assets/svg/up.svg'
-                  alt='menu-mobile'
-                  width={32}
-                  height={32}
-                  className='cursor-pointer'
-                  onClick={toggleMobileMenu}
-                />
               </div>
             )}
           </motion.ul>
