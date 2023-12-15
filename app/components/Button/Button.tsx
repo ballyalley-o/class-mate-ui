@@ -23,7 +23,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`flexCenter gap-3 rounded-sm border p-3 ${variant}`}
+      className={`flexCenter gap-3 rounded-sm p-3 ${variant}`}
       type={type}
       title={title}
     >
@@ -36,7 +36,9 @@ const Button = ({
           className={`${iconClassName} transition-transform hover:scale-150 hover:rotate-12`}
         />
       )}
-      <label className='bold-14 whitespace-nowrap'>{title}</label>
+      <label className='bold-14 whitespace-nowrap cursor-pointer'>
+        {title}
+      </label>
     </button>
   )
 }
