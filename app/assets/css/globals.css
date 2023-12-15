@@ -34,6 +34,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.brandColor {
+  background-color: bisque;
+  color: black;
+}
+
 @layer utilities {
   .nav {
     @apply flexBetween max-container padding-container relative z-30 py-5;
@@ -47,12 +52,16 @@ body {
     @apply flex gap-2 text-sm font-medium text-white-200;
   }
 
-  .btn_green {
-    @apply px-8 py-5 text-white;
+  .btn_invite {
+    @apply px-8 py-5 border text-white;
   }
 
-  .btn_dark_green {
-    @apply px-8 py-4 text-white transition-all hover:bg-black;
+  .btn_regular {
+    @apply px-8 py-4 border text-white transition-all hover:bg-black;
+  }
+
+  .btn_mini {
+    @apply hover:text-white h-16 text-gray-600 p-5 transition-all;
   }
 
   .flexCenter {
