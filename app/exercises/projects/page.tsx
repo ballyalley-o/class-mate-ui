@@ -23,7 +23,7 @@ const Projects = () => {
               alt='class-mate'
               width={50}
               height={100}
-              className='absolute lg:left-[210px] top-[10px] w-10 xs:left-[130px] lg:w-[50px]'
+              className='absolute lg:left-[230px] top-[10px] w-10 xs:left-[150px] lg:w-[50px]'
             />
             <h2 className='bold-40 lg:bold-64 mb-5'>Projects</h2>
             <hr />
