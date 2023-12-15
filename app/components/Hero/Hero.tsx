@@ -28,7 +28,7 @@ const Hero = () => {
           <Button
             type='button'
             title='REQUEST FOR AN INVITE'
-            variant='btn_green'
+            variant='btn_invite'
             icon='go'
             w={24}
             h={24}
