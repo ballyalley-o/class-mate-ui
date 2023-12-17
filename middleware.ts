@@ -8,11 +8,6 @@ export default authMiddleware({
       return redirectToSignIn({ returnBackUrl: req.url })
     }
 
-    // if (auth.userId) {
-    //   const orgSelection = new URL('/', req.url);
-    //   return NextResponse.redirect(orgSelection);
-    // }
-
     if (auth.userId && !auth.isPublicRoute) {
       return NextResponse.next()
     }
