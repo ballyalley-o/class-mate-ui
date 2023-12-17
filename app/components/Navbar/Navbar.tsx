@@ -62,9 +62,11 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
       }
     }
 
-    if (isMobileMenu && !isUserBtn) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
+    // if (isMobileMenu && !isUserBtn) {
+    //   document.addEventListener('mousedown', handleClickOutside)
+    // }
+
+    document.addEventListener('mousedown', handleClickOutside)
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
