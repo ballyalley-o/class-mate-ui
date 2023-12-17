@@ -16,3 +16,5 @@ export { default as ProjectItem } from '@components/Exercises/ProjectItem'
 export { default as Mid } from '@components/Mid/Mid'
 // @default
 export { default as LinkWrap } from '@components/Default/LinkWrap'
+// @table
+export { default as StudentTable } from '@components/Table/StudentTable'
