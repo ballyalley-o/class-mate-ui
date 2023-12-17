@@ -10,10 +10,9 @@ import { motion } from 'framer-motion'
 // @clerk
 import { UserButton, auth } from '@clerk/nextjs'
 import { Button, LinkWrap } from '@components'
-import { NAV } from '@constants'
+import { NAV } from '@constants/routes'
 // @utils
 import classNames from 'classnames'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { delay } from '@utils'
 
 type Navbar = {
@@ -24,8 +23,21 @@ type Navbar = {
 const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
   const [isUserBtn, setIsUserBtn] = useState(false)
+  const [isOpen, setIsOpen] = useState<{ [key: string]: boolean }>({})
+
   const mobileMenuRef = useRef<HTMLDivElement | null>(null)
   const userProfileRef = useRef<HTMLDivElement | null>(null)
+
+  const handleHoverEnter = (key: any) => {
+    setIsOpen((prev) => ({
+      ...prev,
+      [key]: true,
+    }))
+  }
+
+  const handleHoverLeave = () => {
+    setIsOpen({})
+  }
 
   const toggleMobileMenu = () => {
     setIsMobileMenu((prevState) => !prevState)
@@ -42,9 +54,9 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
       if (
         isMobileMenu &&
         mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(clickedElement) &&
-        userProfileRef.current &&
-        !userProfileRef.current.contains(clickedElement)
+        !mobileMenuRef.current.contains(clickedElement)
+        // && userProfileRef.current &&
+        // !userProfileRef.current.contains(clickedElement)
       ) {
         toggleMobileMenu()
       }
@@ -55,7 +67,7 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
     }
 
     return () => {
-        document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [isMobileMenu, isUserBtn])
 
@@ -64,91 +76,63 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
       <NavBrand />
       <ul className='hidden h-full gap-12 lg:flex'>
         {NAV.map((link) => (
-           <Menu as="div" className="relative inline-block text-left">
-           <div>
-             <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                {link.label}
-               <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
-             </Menu.Button>
-           </div>
-
-           <Transition
-             as={Fragment}
-             enter="transition ease-out duration-100"
-             enterFrom="transform opacity-0 scale-95"
-             enterTo="transform opacity-100 scale-100"
-             leave="transition ease-in duration-75"
-             leaveFrom="transform opacity-100 scale-100"
-             leaveTo="transform opacity-0 scale-95"
-           >
-             <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-               <div className="py-1">
-                 <Menu.Item>
-                   {({ active }) => (
-                     <a
-                       href="#"
-                       className={classNames(
-                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                         'block px-4 py-2 text-sm'
-                       )}
-                     >
-                       Account settings
-                     </a>
-                   )}
-                 </Menu.Item>
-                 <Menu.Item>
-                   {({ active }) => (
-                     <a
-                       href="#"
-                       className={classNames(
-                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                         'block px-4 py-2 text-sm'
-                       )}
-                     >
-                       Support
-                     </a>
-                   )}
-                 </Menu.Item>
-                 <Menu.Item>
-                   {({ active }) => (
-                     <a
-                       href="#"
-                       className={classNames(
-                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                         'block px-4 py-2 text-sm'
-                       )}
-                     >
-                       License
-                     </a>
-                   )}
-                 </Menu.Item>
-                 <form method="POST" action="#">
-                   <Menu.Item>
-                     {({ active }) => (
-                       <button
-                         type="submit"
-                         className={classNames(
-                           active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                           'block w-full px-4 py-2 text-left text-sm'
-                         )}
-                       >
-                         Sign out
-                       </button>
-                     )}
-                   </Menu.Item>
-                 </form>
-               </div>
-             </Menu.Items>
-           </Transition>
-         </Menu>
-
-          // <Link
-          //   href={link.href}
-          //   key={link.key}
-          //   className='light-14 hover:regular-18 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
-          // >
-          //   <motion.div className='w-20'>{link.label}</motion.div>
-          // </Link>
+          <button
+            key={link.key}
+            className='light-14 hover:regular-24 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
+            onMouseEnter={() => handleHoverEnter(link.key)}
+            onMouseLeave={() => handleHoverLeave()}
+          >
+            <Menu
+              as='div'
+              key={link.key}
+              className='relative inline-block text-left'
+            >
+              <div>
+                <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
+                  {link.subItems.length > 0 ? (
+                    link.label
+                  ) : (
+                    <a href={link.href}>{link.label}</a>
+                  )}
+                </Menu.Button>
+              </div>
+              {link.subItems &&
+                link.subItems.length > 0 &&
+                isOpen[link.key] && (
+                  <Transition
+                    as={Fragment}
+                    enter='transition ease-out duration-100'
+                    enterFrom='transform opacity-0 scale-95'
+                    enterTo='transform opacity-100 scale-100'
+                    leave='transition ease-in duration-75'
+                    leaveFrom='transform opacity-100 scale-100'
+                    leaveTo='transform opacity-0 scale-95'
+                  >
+                    <Menu.Items className='absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                      <div className='py-1'>
+                        {link.subItems.map((sub) => (
+                          <Menu.Item key={sub.key}>
+                            {({ active }) => (
+                              <a
+                                href={sub.href}
+                                className={classNames(
+                                  active ? 'text-gray-200' : 'text-gray-400',
+                                  'block px-4 py-2 text-xl'
+                                )}
+                              >
+                                {sub.label}
+                              </a>
+                            )}
+                          </Menu.Item>
+                        ))}
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                )}
+            </Menu>
+            {/* {link.label} */}
+            {/* <motion.div className='w-20'>{link.label}</motion.div> */}
+          </button>
         ))}
       </ul>
 
