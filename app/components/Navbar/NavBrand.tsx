@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { GLOBAL } from '@config'
 import * as _ from '@assets/styles/navbar'
-import { NAV } from '@constants'
+// import { NAV } from '@constants'
 
 const NavBrand = () => {
   return (

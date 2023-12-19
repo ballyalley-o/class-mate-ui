@@ -78,7 +78,7 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
       <NavBrand />
       <ul className='hidden h-full gap-12 lg:flex'>
         {NAV.map((link) => (
-          <button
+          <div
             key={link.key}
             className='light-14 hover:regular-24 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
             // onMouseEnter={() => handleHoverEnter(link.key)}
@@ -89,15 +89,16 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
               key={link.key}
               className='relative inline-block text-left'
             >
-              <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
-                {link.subItems.length > 0 ? (
-                  link.label
-                ) : (
-                  <a href={link.href}>
-                    <button type='button'>{link.label}</button>
-                  </a>
-                )}
-              </Menu.Button>
+              {/* FIXME: hydration error coming from here */}
+              {link.subItems.length > 0 ? (
+                <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
+                  {link.label}
+                </Menu.Button>
+              ) : (
+                <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
+                  <Link href={link.href}>{link.label}</Link>
+                </Menu.Button>
+              )}
 
               {link.subItems && link.subItems.length > 0 && (
                 <Transition
@@ -131,7 +132,7 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
             </Menu>
             {/* {link.label} */}
             {/* <motion.div className='w-20'>{link.label}</motion.div> */}
-          </button>
+          </div>
         ))}
       </ul>
 
@@ -230,7 +231,7 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
                 </Link>
               </motion.li>
             ) : (
-              <div className='flex flex-row justify-between space-x-3 gap-2 my-5 mr-5 '>
+              <motion.div className='flex flex-row justify-between space-x-3 gap-2 my-5 mr-5 '>
                 <Image
                   src='/assets/svg/up.svg'
                   alt='menu-mobile'
@@ -254,7 +255,7 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
                     </li>
                   </span>
                 </motion.div>
-              </div>
+              </motion.div>
             )}
           </motion.ul>
         </div>
