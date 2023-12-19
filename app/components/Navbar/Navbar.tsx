@@ -54,17 +54,17 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
       if (
         isMobileMenu &&
         mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(clickedElement)
-        // && userProfileRef.current &&
-        // !userProfileRef.current.contains(clickedElement)
+        !mobileMenuRef.current.contains(clickedElement) &&
+        userProfileRef.current &&
+        !userProfileRef.current.contains(clickedElement)
       ) {
         toggleMobileMenu()
       }
     }
 
-    // if (isMobileMenu && !isUserBtn) {
-    //   document.addEventListener('mousedown', handleClickOutside)
-    // }
+    if (isMobileMenu && !isUserBtn) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
 
     document.addEventListener('mousedown', handleClickOutside)
 
@@ -81,56 +81,53 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
           <button
             key={link.key}
             className='light-14 hover:regular-24 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
-            onMouseEnter={() => handleHoverEnter(link.key)}
-            onMouseLeave={() => handleHoverLeave()}
+            // onMouseEnter={() => handleHoverEnter(link.key)}
+            // onMouseLeave={() => handleHoverLeave()}
           >
             <Menu
               as='div'
               key={link.key}
               className='relative inline-block text-left'
             >
-              <div>
-                <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
-                  {link.subItems.length > 0 ? (
-                    link.label
-                  ) : (
-                    <a href={link.href}>{link.label}</a>
-                  )}
-                </Menu.Button>
-              </div>
-              {link.subItems &&
-                link.subItems.length > 0 &&
-                isOpen[link.key] && (
-                  <Transition
-                    as={Fragment}
-                    enter='transition ease-out duration-100'
-                    enterFrom='transform opacity-0 scale-95'
-                    enterTo='transform opacity-100 scale-100'
-                    leave='transition ease-in duration-75'
-                    leaveFrom='transform opacity-100 scale-100'
-                    leaveTo='transform opacity-0 scale-95'
-                  >
-                    <Menu.Items className='absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                      <div className='py-1'>
-                        {link.subItems.map((sub) => (
-                          <Menu.Item key={sub.key}>
-                            {({ active }) => (
-                              <a
-                                href={sub.href}
-                                className={classNames(
-                                  active ? 'text-gray-200' : 'text-gray-400',
-                                  'block px-4 py-2 text-xl'
-                                )}
-                              >
-                                {sub.label}
-                              </a>
-                            )}
-                          </Menu.Item>
-                        ))}
-                      </div>
-                    </Menu.Items>
-                  </Transition>
+              <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
+                {link.subItems.length > 0 ? (
+                  link.label
+                ) : (
+                  <a href={link.href}>
+                    <button type='button'>{link.label}</button>
+                  </a>
                 )}
+              </Menu.Button>
+
+              {link.subItems && link.subItems.length > 0 && (
+                <Transition
+                  as={Fragment}
+                  enter='transition ease-out duration-100'
+                  enterFrom='transform opacity-0 scale-95'
+                  enterTo='transform opacity-100 scale-100'
+                  leave='transition ease-in duration-75'
+                  leaveFrom='transform opacity-100 scale-100'
+                  leaveTo='transform opacity-0 scale-95'
+                >
+                  <Menu.Items className='absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                    {link.subItems.map((sub) => (
+                      <Menu.Item key={sub.key}>
+                        {({ active }) => (
+                          <a
+                            href={sub.href}
+                            className={classNames(
+                              active ? 'text-gray-200' : 'text-gray-400',
+                              'block px-4 py-2 text-xl'
+                            )}
+                          >
+                            <button type='button'>{sub.label}</button>
+                          </a>
+                        )}
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+                </Transition>
+              )}
             </Menu>
             {/* {link.label} */}
             {/* <motion.div className='w-20'>{link.label}</motion.div> */}
@@ -198,7 +195,9 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
                   closeMobileMenu()
                 }}
               >
-                <div className='h-12'> {link.label}</div>
+                <div className='h-12'>
+                  <button type='button'>{link.label}</button>
+                </div>
               </Link>
             ))}
             <hr className='bg-gray-700' />
