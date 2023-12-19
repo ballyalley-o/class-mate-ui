@@ -1,5 +1,18 @@
+interface Student {
+  _id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  username: string;
+  location: string;
+  cohort: {
+    name: string;
+  };
+  isActive: boolean;
+}
+
 interface StudentTableProps {
-  students: object
+  students: Student[]
 }
 
 const StudentTable = ({ students }: StudentTableProps) => {
