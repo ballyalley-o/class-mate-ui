@@ -1,7 +1,7 @@
-import React from 'react'
+'use client'
+
 
 const Exercises = () => {
-  return <div className='grid grid-flow-col'></div>
 }
 
 export default Exercises
