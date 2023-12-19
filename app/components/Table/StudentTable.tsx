@@ -15,7 +15,7 @@ const StudentTable = ({ students }: StudentTableProps) => {
   ]
 
   return (
-    <table className='min-w-full divide-y divide-gray-800'>
+    <table className='min-w-full divide-y divide-gray-800 border-collapse'>
       <thead>
         <tr>
           {headers.map((header) => (
@@ -38,14 +38,14 @@ const StudentTable = ({ students }: StudentTableProps) => {
                 : 'bg-black text-white'
             }
           >
-            <td className='py-2 px-4 border-b'>{student._id}</td>
-            <td className='py-2 px-4 border-b'>{student.firstname}</td>
-            <td className='py-2 px-4 border-b'>{student.lastname}</td>
-            <td className='py-2 px-4 border-b'>{student.email}</td>
-            <td className='py-2 px-4 border-b'>{student.username}</td>
-            <td className='py-2 px-4 border-b'>{student.location}</td>
-            <td className='py-2 px-4 border-b'>{student.cohort.name}</td>
-            <td className='py-2 px-4 border-b'>
+            <td className='px-4 border-b'>{student._id}</td>
+            <td className='px-4 border-b'>{student.firstname}</td>
+            <td className='px-4 border-b'>{student.lastname}</td>
+            <td className='px-4 border-b'>{student.email}</td>
+            <td className='px-4 border-b'>{student.username}</td>
+            <td className='px-4 border-b'>{student.location}</td>
+            <td className='px-4 border-b'>{student.cohort.name}</td>
+            <td className='px-4 border-b'>
               {student.isActive ? 'Active' : 'Inactive'}
             </td>
           </tr>
