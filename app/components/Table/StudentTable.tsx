@@ -1,14 +1,14 @@
 interface Student {
-  _id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  username: string;
-  location: string;
+  _id: string
+  firstname: string
+  lastname: string
+  email: string
+  username: string
+  location: string
   cohort: {
-    name: string;
-  };
-  isActive: boolean;
+    name: string
+  }
+  isActive: boolean
 }
 
 interface StudentTableProps {
@@ -51,14 +51,14 @@ const StudentTable = ({ students }: StudentTableProps) => {
                 : 'bg-black text-white'
             }
           >
-            <td className='px-4 border-b'>{student._id}</td>
-            <td className='px-4 border-b'>{student.firstname}</td>
-            <td className='px-4 border-b'>{student.lastname}</td>
-            <td className='px-4 border-b'>{student.email}</td>
-            <td className='px-4 border-b'>{student.username}</td>
-            <td className='px-4 border-b'>{student.location}</td>
-            <td className='px-4 border-b'>{student.cohort.name}</td>
-            <td className='px-4 border-b'>
+            <td className='px-6 text-center border-b'>{student._id}</td>
+            <td className='px-4 text-center border-b'>{student.firstname}</td>
+            <td className='px-4 text-center border-b'>{student.lastname}</td>
+            <td className='px-4 text-center border-b'>{student.email}</td>
+            <td className='px-4 text-center border-b'>{student.username}</td>
+            <td className='px-4 text-center border-b'>{student.location}</td>
+            <td className='px-4 text-center border-b'>{student.cohort.name}</td>
+            <td className='px-4 text-center border-b'>
               {student.isActive ? 'Active' : 'Inactive'}
             </td>
           </tr>
