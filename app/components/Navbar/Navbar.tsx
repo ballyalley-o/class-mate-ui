@@ -81,15 +81,14 @@ const Navbar: React.FC<Navbar> = ({ auth, actor }: Navbar) => {
           <div
             key={link.key}
             className='light-14 hover:regular-24 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all ease-in-out'
-            // onMouseEnter={() => handleHoverEnter(link.key)}
-            // onMouseLeave={() => handleHoverLeave()}
+            onMouseEnter={() => handleHoverEnter(link.key)}
+            onMouseLeave={() => handleHoverLeave()}
           >
             <Menu
               as='div'
               key={link.key}
               className='relative inline-block text-left'
             >
-              {/* FIXME: hydration error coming from here */}
               {link.subItems.length > 0 ? (
                 <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-md text-gray-200 shadow-sm'>
                   {link.label}
