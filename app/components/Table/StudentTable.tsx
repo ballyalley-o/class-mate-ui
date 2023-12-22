@@ -1,19 +1,4 @@
-interface Student {
-  _id: string
-  firstname: string
-  lastname: string
-  email: string
-  username: string
-  location: string
-  cohort: {
-    name: string
-  }
-  isActive: boolean
-}
-
-interface StudentTableProps {
-  students: Student[]
-}
+import { StudentTableProps } from '@interfaces/Student'
 
 const StudentTable = ({ students }: StudentTableProps) => {
   const headers = [
