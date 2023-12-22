@@ -197,6 +197,28 @@ const mockStudents = [
     updatedAt: '2023-11-14T09:30:45.123Z',
     id: '2',
   },
+  {
+    _id: '2',
+    firstname: 'Jane',
+    lastname: 'Smith',
+    role: {
+      _id: 'role1',
+      type: 'Student',
+    },
+    email: 'jane.smith@example.com',
+    username: '@janesmith',
+    location: 'San Francisco, CA, USA',
+    avatar: '',
+    cohort: {
+      _id: 'cohort2',
+      name: '2023-11-15-se-ff-us-blue',
+    },
+    isActive: false,
+    isArchived: false,
+    createdAt: '2023-11-13T10:15:20.500Z',
+    updatedAt: '2023-11-14T09:30:45.123Z',
+    id: '2',
+  },
 ]
 
 export default mockStudents
