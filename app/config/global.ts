@@ -2,6 +2,7 @@ import LANG from './lang'
 
 const GLOBAL = {
   api: process.env.API_URL,
+  env: process.env.ENV,
   brand: {
     logo: '/assets/brand/classmate-main.svg',
     logo_secondary: '/assets/brand/classmate-ico.svg',
