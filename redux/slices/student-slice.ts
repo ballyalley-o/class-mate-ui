@@ -8,3 +8,5 @@ export const students = createSlice({
   initialState: '',
   reducers: {},
 })
+
+export default students.reducer
