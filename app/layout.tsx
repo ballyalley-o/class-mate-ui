@@ -1,12 +1,14 @@
 import '@globals'
 import type { Metadata } from 'next'
 import { Kenia, Staatliches, Roboto } from 'next/font/google'
-import { LANG } from '@config'
+// @redux
+import { Providers } from '@redux/provider'
 // @clerk
 import { ClerkProvider, auth } from '@clerk/nextjs'
-import { dark, neobrutalism, shadesOfPurple } from '@clerk/themes'
 // @components
 import { Navbar, Footer } from '@components'
+// @constants
+import { SETTING, LANG } from '@config'
 
 const kenia = Kenia({
   subsets: ['latin'],
@@ -37,41 +39,12 @@ export default function RootLayout({
 }) {
   const { userId, session } = auth()
   return (
-    <ClerkProvider
-      // REFACTOR:
-      appearance={{
-        variables: { colorPrimary: 'red' },
-        baseTheme: dark,
-        signIn: {
-          variables: { colorPrimary: 'red' },
-        },
-        elements: {
-          formButtonPrimary: {
-            fontSize: 14,
-            color: '#000',
-            textTransform: 'uppercase',
-            backgroundColor: '#FFF',
-            '&:hover, &:focus, &:active': {
-              backgroundColor: '#000',
-              color: '#FFF',
-            },
-          },
-        },
-        layout: {
-          socialButtonsPlacement: 'top',
-          socialButtonsVariant: 'iconButton',
-          termsPageUrl: 'https://clerk.com/terms',
-          logoPlacement: 'outside',
-          logoImageUrl: '/assets/brand/classmate-ico.svg',
-          shimmer: true,
-        },
-      }}
-    >
+    <ClerkProvider appearance={JSON.parse(JSON.stringify(SETTING.appearance))}>
       <html lang={LANG.en}>
         <body className={roboto.className}>
           <main className='relative overflow-hidden'>
             <Navbar auth={userId} />
-            {children}
+            <Providers>{children}</Providers>
             <Footer />
           </main>
         </body>
