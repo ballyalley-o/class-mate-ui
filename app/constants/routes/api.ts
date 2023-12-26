@@ -4,11 +4,11 @@ import { GLOBAL } from '@config'
 const apiUrl = GLOBAL.api || ''
 
 function apiConnect(...params: string[]) {
-  if (!apiUrl) {
-    throw new Error('apiUrl is undefined')
-  }
+  // if (!apiUrl) {
+  //   throw new Error('apiUrl is undefined')
+  // }
 
-  const apiPath = path.resolve(apiUrl, ...params)
+  const apiPath = path.join(apiUrl, ...params)
 
   return apiPath
 }
