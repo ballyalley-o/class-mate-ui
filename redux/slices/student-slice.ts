@@ -1,12 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Student } from '@interfaces/Student'
+import { API } from '@constants/routes'
+import { apiSlice } from '@redux/slices/api-slice'
 
-const initialState = {}
-
-export const students = createSlice({
-  name: 'students',
-  initialState: '',
-  reducers: {},
+export const studentsApiSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getStudents: builder.query({
+      query: () => ({
+        url: API.students,
+      }),
+      keepUnusedDataFor: 5,
+    }),
+  }),
 })
 
-export default students.reducer
+export const { useGetStudentsQuery } = studentsApiSlice
