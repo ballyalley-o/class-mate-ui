@@ -2,7 +2,7 @@ import '@globals'
 import type { Metadata } from 'next'
 import { Kenia, Staatliches, Roboto } from 'next/font/google'
 // @redux
-import { Providers } from '@redux/provider'
+import { Providers } from '@lib/provider'
 // @clerk
 import { ClerkProvider, auth } from '@clerk/nextjs'
 // @components

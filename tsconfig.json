@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@*": ["./*"],
-      "@redux/*": ["../redux/*"],
+      "@lib/*": ["../lib/*"],
       "@globals": ["./assets/css/globals.css"],
       "@styles": ["./assets/styles/*"],
       "@css": ["./assets/css/*"],

@@ -1,5 +1,5 @@
 import { API } from '@constants/routes'
-import { apiSlice } from '@redux/slices/api-slice'
+import { apiSlice } from './api-slice'
 
 export const studentsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
