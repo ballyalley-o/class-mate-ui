@@ -4,7 +4,7 @@ import React from 'react'
 import { StudentTable } from '@components'
 import { mockStudents } from '@constants/mock'
 // @slices
-import { useGetStudentsQuery } from '@redux/slices/student-slice'
+import { useGetStudentsQuery } from '@lib/features/student-slice'
 
 const Students = () => {
   const { data: students, isLoading, error } = useGetStudentsQuery()
@@ -18,7 +18,7 @@ const Students = () => {
       ) : (
         <div className='max-container padding-container relative w-full flex justify-end'>
           <div className='flex flex-1 lg:min-h-[900px]'>
-            <StudentTable students={students} />
+            <StudentTable students={students?.students} />
           </div>
         </div>
       )}
