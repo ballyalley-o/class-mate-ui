@@ -25,6 +25,6 @@ const API = {
   signOut: apiConnect('/auth', 'sign-out'),
 }
 
-console.log(API.signIn)
+console.log(API.students)
 
 export default API
