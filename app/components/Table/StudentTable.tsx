@@ -1,7 +1,10 @@
 import { StudentTableProps } from '@interfaces/Student'
+import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { XCircleIcon } from '@heroicons/react/20/solid'
 
 const StudentTable = ({ students }: StudentTableProps) => {
   const headers = [
+    'Status',
     'ID',
     'First Name',
     'Last Name',
@@ -28,21 +31,27 @@ const StudentTable = ({ students }: StudentTableProps) => {
       </thead>
       <tbody>
         {students.map((student) => (
-          <tr
-            key={student?._id}
-            className={
-              student.isActive
-                ? 'bg-green-200 text-black'
-                : 'bg-black text-white'
-            }
-          >
-            <td className='px-6 text-center border-b'>{student._id}</td>
-            <td className='px-4 text-center border-b'>{student.firstname}</td>
-            <td className='px-4 text-center border-b'>{student.lastname}</td>
-            <td className='px-4 text-center border-b'>{student.email}</td>
-            <td className='px-4 text-center border-b'>{student.username}</td>
-            <td className='px-4 text-center border-b'>{student.location}</td>
-            <td className='px-4 text-center border-b'>{student.cohort.name}</td>
+          <tr key={student?._id} className={'bg-black text-white'}>
+            <td className='px-6  border-b'>
+              {student?.isActive ? (
+                <CheckCircleIcon
+                  width={15}
+                  height={15}
+                  className='text-green-500'
+                />
+              ) : (
+                <XCircleIcon width={15} height={15} className='text-red-500' />
+              )}
+            </td>
+            <td className='px-6 text-center border-b'>{student?._id}</td>
+            <td className='px-4 text-center border-b'>{student?.firstname}</td>
+            <td className='px-4 text-center border-b'>{student?.lastname}</td>
+            <td className='px-4 text-center border-b'>{student?.email}</td>
+            <td className='px-4 text-center border-b'>{student?.username}</td>
+            <td className='px-4 text-center border-b'>{student?.location}</td>
+            <td className='px-4 text-center border-b'>
+              {student?.cohort?.name}
+            </td>
             <td className='px-4 text-center border-b'>
               {student.isActive ? 'Active' : 'Inactive'}
             </td>
