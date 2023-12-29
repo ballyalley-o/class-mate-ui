@@ -1,16 +1,14 @@
-import path from 'path'
-import { GLOBAL } from '@config'
+import url from 'url'
+import { GLOBAL } from '../../config'
 
 const apiUrl = GLOBAL.api || ''
+const apiVer = GLOBAL.ver || ''
 
 function apiConnect(...params: string[]) {
-  // if (!apiUrl) {
-  //   throw new Error('apiUrl is undefined')
-  // }
+  const relativePath = params.join('/')
+  const fullPath = url.resolve(apiUrl, apiVer) + relativePath.substring(1)
 
-  const apiPath = path.join(apiUrl, ...params)
-
-  return apiPath
+  return fullPath
 }
 
 const API = {
@@ -25,6 +23,6 @@ const API = {
   signOut: apiConnect('/auth', 'sign-out'),
 }
 
-console.log(API.students)
+console.log(API.students, 'GLOBAL')
 
 export default API
