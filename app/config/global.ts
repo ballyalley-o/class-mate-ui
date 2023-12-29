@@ -1,4 +1,4 @@
-import LANG from './lang'
+import LANG from '@config/lang'
 
 const GLOBAL = {
   api: process.env.API_URL,
