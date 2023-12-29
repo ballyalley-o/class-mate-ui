@@ -21,11 +21,32 @@ table {
   width: 100%;
 }
 
+th {
+  padding-bottom: 1em;
+}
+
+td {
+  transition: padding 0.3s ease-in-out;
+}
+
+td:hover {
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+}
+
+.focusBlur {
+  filter: blur(2px); /* Apply a default blur effect */
+}
+
+.hovered {
+  filter: none; /* Remove blur effect when hovered */
+}
+
 th,
 td {
   text-align: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 @media (prefers-color-scheme: dark) {
