@@ -25,10 +25,9 @@ const Students = () => {
             </div>
           ) : error ? (
             <div className='text-center m-auto'>
-              <h1>
+              <h1 className='text-2xl'>
                 {isFetchBaseQueryError(error)
-                  ? (error as FetchBaseQueryError).data?.error ||
-                    'An error occurred'
+                  ? 'An error occured in fetching the data'
                   : String(error)}
               </h1>
             </div>

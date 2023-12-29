@@ -8,7 +8,7 @@ const NAV = [
     subItems: [],
   },
   {
-    href: '/students',
+    href: '/student',
     key: 'students',
     label: 'Students',
     subItems: [],
@@ -20,17 +20,17 @@ const NAV = [
     subItems: [],
   },
   {
-    href: '/exercises',
+    href: '/exercise',
     key: 'exercises',
     label: 'Exercises',
     subItems: [
       {
-        href: '/exercises',
+        href: '/exercise',
         key: 'exercises',
         label: 'Exercises',
       },
       {
-        href: '/exercises/projects',
+        href: '/exercise/project',
         key: 'projects',
         label: 'Projects',
       },
