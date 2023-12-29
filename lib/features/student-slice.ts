@@ -1,4 +1,3 @@
-import { FetchArgs } from '@reduxjs/toolkit/query/react'
 import { API } from '@app-routes'
 import { apiSlice } from '@lib/features/api-slice'
 
