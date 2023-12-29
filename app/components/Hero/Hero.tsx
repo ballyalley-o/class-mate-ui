@@ -24,7 +24,7 @@ const Hero = () => {
           <p className='bold-16 lg:bold-20 text-blue-70'>&nbsp;</p>
         </div>
 
-        <div className='flex flex-col lg:w-80  xs:w-auto regular-8 gap-3 flex-row'>
+        <div className='flex flex-col lg:w-80 lg:h-auto xs:w-auto regular-8 gap-3 flex-row'>
           <Button
             type='button'
             title='REQUEST FOR AN INVITE'
