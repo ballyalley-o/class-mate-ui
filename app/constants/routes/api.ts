@@ -23,6 +23,4 @@ const API = {
   signOut: apiConnect('/auth', 'sign-out'),
 }
 
-console.log(API.students, 'GLOBAL')
-
 export default API
