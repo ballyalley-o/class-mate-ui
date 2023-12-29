@@ -16,6 +16,18 @@
   scroll-behavior: smooth;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
