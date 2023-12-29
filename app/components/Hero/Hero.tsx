@@ -1,11 +1,19 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+// @slices
+import { useGetStudentsQuery } from '@lib/features/student-slice'
 import { GLOBAL } from '@config'
 import { Button } from '@components'
 import { BRAND } from '@constants'
 
 const Hero = () => {
+  const { data, isLoading, error } = useGetStudentsQuery({})
+
+  const studentsLength = data?.students.length
+
   return (
     <section className='max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row'>
       <div className='hero-card' />
@@ -56,7 +64,7 @@ const Hero = () => {
                 height={24}
               />
             </div>
-            <p className='bold-20 text-white'>45</p>
+            <p className='bold-20 text-white'>{studentsLength}</p>
           </div>
 
           <div className='flexBetween'>
