@@ -18,7 +18,7 @@ const Students = () => {
   return (
     <section className='flex-col flexCenter overflow-hidden bg-projects bg-center bg-no-repeat py-24'>
       <div className='max-container padding-container relative w-full flex justify-end'>
-        <div className='flex flex-1 lg:min-h-[900px]'>
+        <div className=' flex-1 lg:min-h-[900px]'>
           {isLoading ? (
             <div className='text-center m-auto'>
               <h1>Loading...</h1>
