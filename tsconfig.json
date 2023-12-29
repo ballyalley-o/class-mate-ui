@@ -22,6 +22,7 @@
     "paths": {
       "@*": ["./*"],
       "@lib/*": ["../lib/*"],
+      "@app-routes": ["../app/constants/routes"],
       "@globals": ["./assets/css/globals.css"],
       "@styles": ["./assets/styles/*"],
       "@css": ["./assets/css/*"],
