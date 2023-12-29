@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={JSON.parse(JSON.stringify(SETTING.appearance))}>
       <html lang={LANG.en}>
-        <body className={roboto.className}>
+        <body className={roboto.className} suppressHydrationWarning={true}>
           <main className='relative overflow-hidden'>
             <Navbar auth={userId} />
             <Providers>{children}</Providers>
