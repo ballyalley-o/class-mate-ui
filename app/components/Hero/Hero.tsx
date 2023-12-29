@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 // @slices
 import { useGetStudentsQuery } from '@lib/features/student-slice'
-import { GLOBAL } from '@config'
 import { Button } from '@components'
 import { BRAND } from '@constants'
 
@@ -28,7 +27,6 @@ const Hero = () => {
 
         <div className='my-11 flex flex-wrap gap-5'>
           <div className='flex items-center gap-2'>&nbsp;</div>
-
           <p className='bold-16 lg:bold-20 text-blue-70'>&nbsp;</p>
         </div>
 
