@@ -1,8 +1,9 @@
 import LANG from '@config/lang'
 
 const GLOBAL = {
-  api: process.env.API_URL,
-  env: process.env.ENV,
+  api: process.env.NEXT_PUBLIC_API_URL,
+  env: process.env.NEXT_PUBLIC_ENV,
+  ver: process.env.NEXT_PUBLIC_API_VERSION,
   brand: {
     logo: '/assets/brand/classmate-main.svg',
     logo_secondary: '/assets/brand/classmate-ico.svg',
