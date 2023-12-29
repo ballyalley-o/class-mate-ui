@@ -12,7 +12,6 @@ const StudentTable = ({ students }: StudentTableProps) => {
     'Username',
     'Location',
     'Cohort',
-    'Active',
   ]
 
   return (
@@ -32,12 +31,12 @@ const StudentTable = ({ students }: StudentTableProps) => {
       <tbody>
         {students.map((student) => (
           <tr key={student?._id} className={'bg-black text-white'}>
-            <td className='px-6  border-b'>
+            <td className='px-6  border-b justify-center text-center'>
               {student?.isActive ? (
                 <CheckCircleIcon
                   width={15}
                   height={15}
-                  className='text-green-500'
+                  className='text-green-500 my-auto'
                 />
               ) : (
                 <XCircleIcon width={15} height={15} className='text-red-500' />
@@ -51,9 +50,6 @@ const StudentTable = ({ students }: StudentTableProps) => {
             <td className='px-4 text-center border-b'>{student?.location}</td>
             <td className='px-4 text-center border-b'>
               {student?.cohort?.name}
-            </td>
-            <td className='px-4 text-center border-b'>
-              {student.isActive ? 'Active' : 'Inactive'}
             </td>
           </tr>
         ))}
