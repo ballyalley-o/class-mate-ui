@@ -4,9 +4,11 @@ import { XCircleIcon } from '@heroicons/react/20/solid'
 
 const StudentTableRow = ({
   student,
+  isFocused,
   isHovered,
   onMouseEnter,
   onMouseLeave,
+  onFocus,
 }: any) => {
   const [hoverCoords, setHoverCoords] = useState({ x: 0, y: 0 })
 
@@ -19,29 +21,25 @@ const StudentTableRow = ({
 
   const handleMouseLeave = () => {
     setHoverCoords({ x: 0, y: 0 })
-    onMouseLeave
-    !isHovered
   }
 
-  const gradientStyle =
-    isHovered && hoverCoords.x !== 0 && hoverCoords.y !== 0
-      ? {
-          background: `radial-gradient(circle at ${hoverCoords.x}px ${hoverCoords.y}px, rgba(255, 255, 255, 0.2) 0%, transparent 50%)`,
-        }
-      : {}
+  const gradientStyle = isHovered
+    ? {
+        background: `radial-gradient(circle at ${hoverCoords.x}px ${hoverCoords.y}px, rgba(255, 255, 255, 0.2) 0%, transparent 50%)`,
+        backgroundBlendMode: 'exclusion',
+      }
+    : {}
 
-  const blurStyle = isHovered ? { filter: 'blur(5px)' } : {}
+  const blurClass = isFocused && isHovered ? { filter: 'blur(3px)' } : {}
 
   return (
     <tr
       key={student?._id}
-      className={`bg-black/60 text-white transition-all  backdrop-filter backdrop-blur-md  relative overflow-hidden ${
-        isHovered ? 'hovered' : 'focusBlur'
-      }`}
+      className={`bg-black/60 text-white transition-all  backdrop-filter relative overflow-hidden`}
       onMouseMove={handleMouseMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={gradientStyle}
+      style={{ ...gradientStyle, ...blurClass }}
     >
       <td>
         <div className='inline-block'>

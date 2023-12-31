@@ -10,20 +10,39 @@ const StudentTable = ({ students }: StudentTableProps) => {
   const [hoveredRows, setHoveredRows] = useState(
     new Array(students.length).fill(false)
   )
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null)
+  const [focusedRow, setFocusedRow] = useState(-1)
 
   const handleMouseEnter = (index: number) => {
-    const newHoveredRows = [...hoveredRows]
-    newHoveredRows[index] = true
-    setHoveredRows(newHoveredRows)
+    setHoveredRow(index)
   }
 
-  const handleMouseLeave = (index: number) => {
-    const newHoveredRows = [...hoveredRows]
-    newHoveredRows[index] = false
-    setHoveredRows(newHoveredRows)
+  // const handleMouseEnter = (index: number) => {
+  //   const newHoveredRows = [...hoveredRows]
+  //   newHoveredRows[index] = true
+  //   setHoveredRows(newHoveredRows)
+  // }
+
+  // const handleMouseLeave = (index: number) => {
+  //   const newHoveredRows = [...hoveredRows]
+  //   newHoveredRows[index] = false
+  //   setHoveredRows(newHoveredRows)
+  // }
+
+  const handleMouseLeave = () => {
+    // setHoveredRows(new Array(students.length).fill(false))
+    setHoveredRow(null)
   }
+
+  const handleRowFocus = (index: number) => {
+    setFocusedRow(index)
+  }
+
   return (
-    <table className='min-w-full divide-y divide-gray-800 border-collapse'>
+    <table
+      className='min-w-full divide-y divide-gray-800 border-collapse'
+      onMouseLeave={handleMouseLeave}
+    >
       <thead>
         <tr>
           {studentHeader.map((header) => (
@@ -42,8 +61,10 @@ const StudentTable = ({ students }: StudentTableProps) => {
             student={student}
             key={student?._id}
             onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-            isHovered={hoveredRows[index]}
+            onMouseLeave={handleMouseLeave}
+            isHovered={index === hoveredRow}
+            isFocused={index === focusedRow}
+            onFocus={() => handleRowFocus(index)}
           />
         ))}
       </tbody>
