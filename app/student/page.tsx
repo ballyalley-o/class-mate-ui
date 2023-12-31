@@ -21,14 +21,16 @@ const Students = () => {
         <div className=' flex-1 lg:min-h-[900px]'>
           {isLoading ? (
             <div className='text-center m-auto'>
+              {/* TODO: Loading component skeleton */}
               <h1>Loading...</h1>
             </div>
           ) : error ? (
             <div className='text-center m-auto'>
               <h1 className='text-2xl'>
+                {/* TODO: Error fallbacks */}
                 {isFetchBaseQueryError(error)
                   ? 'An error occured in fetching the data'
-                  : String(error)}
+                  : 'Internal Server Error' || String(error.message)}
               </h1>
             </div>
           ) : (
