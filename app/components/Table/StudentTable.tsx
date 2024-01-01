@@ -7,9 +7,6 @@ import { StudentTableProps } from '@interfaces/Student'
 import { studentHeader } from '@constants'
 
 const StudentTable = ({ students }: StudentTableProps) => {
-  const [hoveredRows, setHoveredRows] = useState(
-    new Array(students.length).fill(false)
-  )
   const [hoveredRow, setHoveredRow] = useState<number | null>(null)
   const [focusedRow, setFocusedRow] = useState(-1)
 
@@ -17,20 +14,7 @@ const StudentTable = ({ students }: StudentTableProps) => {
     setHoveredRow(index)
   }
 
-  // const handleMouseEnter = (index: number) => {
-  //   const newHoveredRows = [...hoveredRows]
-  //   newHoveredRows[index] = true
-  //   setHoveredRows(newHoveredRows)
-  // }
-
-  // const handleMouseLeave = (index: number) => {
-  //   const newHoveredRows = [...hoveredRows]
-  //   newHoveredRows[index] = false
-  //   setHoveredRows(newHoveredRows)
-  // }
-
   const handleMouseLeave = () => {
-    // setHoveredRows(new Array(students.length).fill(false))
     setHoveredRow(null)
   }
 
