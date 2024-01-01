@@ -34,7 +34,7 @@ const StudentTableRow = ({
         zIndex: -1,
         borderBottom: '1px solid transparent',
         borderTop: '1px solid transparent',
-        borderImage: `radial-gradient(circle at ${hoverCoords.x}px ${hoverCoords.y}px, rgba(255, 255, 255, 0.5) 0%, transparent 50%) 1`,
+        borderImage: `radial-gradient(circle at ${hoverCoords.x}px ${hoverCoords.y}px, rgba(255, 255, 255, 0.8) 0%, transparent 50%) 1`,
       }
     : {}
   const gradientStyle: CSSProperties = isHovered
