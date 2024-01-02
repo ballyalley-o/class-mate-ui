@@ -16,6 +16,7 @@
   scroll-behavior: smooth;
 }
 
+/* table */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -47,6 +48,36 @@ td {
   text-align: center;
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+/* animation for skeleton */
+.table-skeleton {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table-skeleton th,
+.table-skeleton td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.skeleton-row {
+  animation: loadingAnimation 1.5s infinite;
+  background: linear-gradient(to right, #333333 0%, #444444 50%, #333333 100%);
+  background-blend-mode: overlay;
+}
+
+@keyframes loadingAnimation {
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: 0 0;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
