@@ -7,8 +7,7 @@ const StudentTableRow = ({
   isFocused,
   isHovered,
   onMouseEnter,
-  onMouseLeave,
-  onFocus,
+  isLoading,
 }: any) => {
   const [hoverCoords, setHoverCoords] = useState({ x: 0, y: 0 })
 
@@ -43,6 +42,13 @@ const StudentTableRow = ({
       }
     : {}
 
+  const skeletonStyle = isLoading
+    ? {
+        background:
+          'linear-gradient(to right, #333333 0%, #444444 50%, #333333 100%)',
+        backgroundBlendMode: 'overlay',
+      }
+    : {}
   // gradient background
   //   const gradientStyle = isHovered
   //     ? {
