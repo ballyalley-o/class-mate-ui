@@ -18,3 +18,5 @@ export { default as Mid } from '@components/Mid/Mid'
 export { default as LinkWrap } from '@components/Default/LinkWrap'
 // @table
 export { default as StudentTable } from '@components/Table/StudentTable'
+// @skeleton
+export { default as TableSkeleton } from '@components/Skeleton/TableSkeleton'
