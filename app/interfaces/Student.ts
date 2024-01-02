@@ -13,4 +13,7 @@ export interface Student {
 
 export interface StudentTableProps {
   students: Student[]
+  isLoading: any
+  error: any
+  studentsLength: number
 }
