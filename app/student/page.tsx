@@ -1,41 +1,33 @@
 'use client'
 
 import React from 'react'
-import { StudentTable } from '@components'
+import { StudentTable, TableSkeleton } from '@components'
 // @redux
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
-
 // @slices
 import { useGetStudentsQuery } from '@lib/features/student-slice'
+// @interfaces
+import { Student } from '@interfaces/Student'
+
+interface StudentData {
+  students: Student[]
+}
 
 const Students = () => {
   const { data, isLoading, error } = useGetStudentsQuery({})
 
-  const isFetchBaseQueryError = (error: any): error is FetchBaseQueryError => {
-    return 'data' in error
-  }
+  const studentsLength = data?.students?.length
 
   return (
     <section className='flex-col flexCenter overflow-hidden bg-projects bg-center bg-no-repeat py-24'>
       <div className='max-container padding-container relative w-full flex justify-end'>
         <div className=' flex-1 lg:min-h-[900px]'>
-          {isLoading ? (
-            <div className='text-center m-auto'>
-              {/* TODO: Loading component skeleton */}
-              <h1>Loading...</h1>
-            </div>
-          ) : error ? (
-            <div className='text-center m-auto'>
-              <h1 className='text-2xl'>
-                {/* TODO: Error fallbacks */}
-                {isFetchBaseQueryError(error)
-                  ? 'An error occured in fetching the data'
-                  : 'Internal Server Error' || String(error.message)}
-              </h1>
-            </div>
-          ) : (
-            <StudentTable students={data.students} />
-          )}
+          <StudentTable
+            students={data?.students}
+            isLoading={isLoading}
+            error={error}
+            studentsLength={studentsLength}
+          />
         </div>
       </div>
     </section>
