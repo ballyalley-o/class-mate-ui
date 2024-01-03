@@ -1,5 +1,6 @@
 export { default as BRAND } from '@constants/brand'
 export { default as PROJECTS } from '@constants/projects'
 export { default as FOOTER } from '@constants/footer'
+export { default as RESPONSE } from '@constants/response'
 export { SOCIALS, CONTACT_US } from '@constants/contact-us'
 export { studentHeader } from '@constants/table-headers'
