@@ -1,4 +1,6 @@
 import { useState, MouseEvent, CSSProperties } from 'react'
+// @asset
+import { ICON } from '@assets/icons'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { XCircleIcon } from '@heroicons/react/20/solid'
 
@@ -66,17 +68,9 @@ const StudentTableRow = ({
       <td>
         <div className='inline-block'>
           {student?.isActive ? (
-            <CheckCircleIcon
-              width={15}
-              height={15}
-              className='text-green-500 inline-block'
-            />
+            <ICON.active.icon {...ICON.active.props} />
           ) : (
-            <XCircleIcon
-              width={15}
-              height={15}
-              className='text-red-500 inline-block'
-            />
+            <ICON.inActive.icon {...ICON.inActive.props} />
           )}
         </div>
       </td>
