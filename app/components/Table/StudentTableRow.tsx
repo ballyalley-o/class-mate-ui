@@ -7,8 +7,7 @@ const StudentTableRow = ({
   isFocused,
   isHovered,
   onMouseEnter,
-  onMouseLeave,
-  onFocus,
+  isLoading,
 }: any) => {
   const [hoverCoords, setHoverCoords] = useState({ x: 0, y: 0 })
 
@@ -37,9 +36,11 @@ const StudentTableRow = ({
         borderImage: `radial-gradient(circle at ${hoverCoords.x}px ${hoverCoords.y}px, rgba(255, 255, 255, 0.8) 0%, transparent 50%) 1`,
       }
     : {}
+
   const gradientStyle: CSSProperties = isHovered
     ? {
         position: 'relative',
+        // fontSize: '1.2em',
       }
     : {}
 
@@ -79,7 +80,6 @@ const StudentTableRow = ({
           )}
         </div>
       </td>
-      <td>{student?._id}</td>
       <td>{student?.firstname}</td>
       <td>{student?.lastname}</td>
       <td>{student?.email}</td>
