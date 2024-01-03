@@ -8,7 +8,7 @@ const TableSkeleton: FC<TableSkeletonProps> = ({ numRows }) => {
   const skeletonRows = Array.from({ length: numRows }, (_, rowIndex) => (
     <div
       key={rowIndex}
-      className='h-5 bg-gray-200  mt-4  dark:bg-gray-900 w-full mb-4'
+      className='h-5 bg-gray-200 py-5 mt-4 dark:bg-gray-900/60 w-full mb-4'
     ></div>
   ))
 
