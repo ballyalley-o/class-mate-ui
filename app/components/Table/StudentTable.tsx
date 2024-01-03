@@ -7,7 +7,7 @@ import { TableSkeleton } from '@components'
 import { StudentTableRow } from '@components/Table'
 import { StudentTableProps } from '@interfaces/Student'
 // @constants
-import { studentHeader } from '@constants'
+import { studentHeader, RESPONSE } from '@constants'
 
 const StudentTable = ({
   students,
@@ -45,7 +45,7 @@ const StudentTable = ({
             {studentHeader.map((header) => (
               <th
                 key={header}
-                className='px-4 bg-black font-bold text-gray-100 uppercase'
+                className='px-4 bg-black font-bold text-gray-200 uppercase'
               >
                 {header}
               </th>
@@ -55,19 +55,23 @@ const StudentTable = ({
         <tbody>
           {isLoading && (
             <tr>
+              {/* FIXME: use num of students instead of the header from the num of rows  */}
               <td colSpan={studentHeader.length} className='text-center m-auto'>
-                <TableSkeleton numRows={studentsLength || 0} />
+                <TableSkeleton numRows={studentHeader.length || 0} />
               </td>
             </tr>
           )}
           {error && (
             <tr>
-              <td colSpan={studentHeader.length} className='text-center m-auto'>
+              <td
+                colSpan={studentHeader.length}
+                className='my-4 text-center m-auto'
+              >
                 <h1 className='text-2xl'>
                   {/* TODO: Error fallbacks */}
                   {isFetchBaseQueryError(error)
-                    ? 'An error occurred in fetching the data'
-                    : 'Internal Server Error' || String(error.message)}
+                    ? RESPONSE.error.fetching
+                    : RESPONSE.error.internalServer || String(error.message)}
                 </h1>
               </td>
             </tr>
