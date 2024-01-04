@@ -1,13 +1,14 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { StudentTable, TableSkeleton } from '@components'
 // @redux
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 // @slices
 import { useGetStudentsQuery } from '@lib/features/student-slice'
-// @interfaces
-import { Student } from '@interfaces/Student'
+// @assets
+import { ICON } from '@assets/icons'
 // @constants
 import { LABEL } from '@constants'
 
