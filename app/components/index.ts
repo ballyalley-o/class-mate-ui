@@ -20,3 +20,5 @@ export { default as LinkWrap } from '@components/Default/LinkWrap'
 export { default as StudentTable } from '@components/Table/StudentTable'
 // @skeleton
 export { default as TableSkeleton } from '@components/Skeleton/TableSkeleton'
+// @search
+export { default as SearchInput } from '@components/Search/SearchInput'
