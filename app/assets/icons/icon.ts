@@ -32,7 +32,7 @@ const ICON: IconConstant = {
     icon: MagnifyingGlassCircleIcon as React.ComponentType<IconDefaultProps>,
     props: {
       src: '/assets/svg/search.svg',
-      className: icon.StyledInActiveIcon,
+      className: icon.StyledSearchIcon,
       width: 16,
       height: 16,
       alt: 'search-icon',
