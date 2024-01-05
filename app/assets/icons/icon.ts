@@ -1,4 +1,9 @@
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image'
+import {
+  CheckCircleIcon,
+  XCircleIcon,
+  MagnifyingGlassCircleIcon,
+} from '@heroicons/react/20/solid'
 import { IconConstant } from '@interfaces/Consants'
 // @styles
 import { icon } from '@assets/styles'
@@ -10,6 +15,7 @@ const ICON: IconConstant = {
       className: icon.StyledActiveIcon,
       width: 15,
       height: 15,
+      alt: 'active-icon',
     },
   },
   inActive: {
@@ -18,6 +24,17 @@ const ICON: IconConstant = {
       className: icon.StyledInActiveIcon,
       width: 15,
       height: 15,
+      alt: 'inActive-icon',
+    },
+  },
+  search: {
+    icon: MagnifyingGlassCircleIcon,
+    props: {
+      src: '/assets/svg/search.svg',
+      className: icon.StyledInActiveIcon,
+      width: 16,
+      height: 16,
+      alt: 'search-icon',
     },
   },
 }
